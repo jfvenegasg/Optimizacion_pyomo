@@ -14633,8 +14633,12 @@ body[data-format='mobile'] .jp-OutputArea-child .jp-OutputArea-output {
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h2 id="Indice">Indice<a class="anchor-link" href="#Indice">¶</a></h2><ol>
+<p><a id="Indice"></a></p>
+<h2 id="Indice">Indice<a class="anchor-link" href="#Indice">¶</a></h2><p><a href="#Indice">Inicio ▲</a></p>
+<ol>
 <li><a href="#Modelamiento-Matematico">Modelamiento Matematico</a></li>
+<li><a href="#Programaci%C3%B3n-Lineal">Programación Lineal</a></li>
+<li><a href="#Programaci%C3%B3n-Entera">Programación Entera</a></li>
 <li><a href="#Libreria-Gurobi">Libreria Gurobi</a></li>
 <li><a href="#Modelaci%C3%B3n-con-Gurobi">Modelación con Gurobi</a></li>
 </ol>
@@ -14649,10 +14653,47 @@ body[data-format='mobile'] .jp-OutputArea-child .jp-OutputArea-output {
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h2 id="Modelamiento-Matematico">Modelamiento Matematico<a class="anchor-link" href="#Modelamiento-Matematico">¶</a></h2><p>El modelamiento matemático es una estructura cientifica que nos permite mediante una formulación,expresar las relaciones que pueden existir entre un conjunto de eventos,parametros,entidades o entre sistemas.En este sentido generalmente buscamos modelar las relaciones existentes entre fenomenos reales tangibles o posibles intangibles.Es asi que para distintos tipos de fenomenos algunos paradigmas permiten explicar o abstraer de mejor forma las situaciones de analisis.Sin embargo hay algunas clasificaciones iniciales que podemos hacer.</p>
+<p><a id="Modelamiento-Matematico"></a></p>
+<h2 id="Modelamiento-Matematico-%F0%9F%8E%A8">Modelamiento Matematico 🎨<a class="anchor-link" href="#Modelamiento-Matematico-%F0%9F%8E%A8">¶</a></h2><p><a href="#Indice">Inicio ▲</a></p>
+<p>El modelamiento matemático es una estructura cientifica que nos permite mediante una formulación,expresar las relaciones que pueden existir entre un conjunto de eventos,parametros,entidades o entre sistemas.En este sentido generalmente buscamos modelar las relaciones existentes entre fenomenos reales tangibles o posibles intangibles.Es asi que para distintos tipos de fenomenos algunos paradigmas permiten explicar o abstraer de mejor forma las situaciones de analisis.Sin embargo hay algunas clasificaciones iniciales que podemos hacer.</p>
 <h3 id="Modelo-seg%C3%BAn-el-tipo-de-representaci%C3%B3n">Modelo según el tipo de representación<a class="anchor-link" href="#Modelo-seg%C3%BAn-el-tipo-de-representaci%C3%B3n">¶</a></h3><p>Cuando buscamos modelar matematicamente una situación existen 2 perspectivas fuertes,las que nos permiten distinguir de distinta forma aspectos de la misma naturaleza de la situación o el objeto de analisis y estos son:</p>
 <p><strong>Modelos cualitativos</strong>:Estos permiten representar mediante diagramas o graficos,las relaciones entre los sistemas de interes.Asi estos solo buscan describir las direcciones generales o particulares del sistema.</p>
 <p><strong>Modelos cuantitativos</strong>:En cambio estos buscan mediante números,representar las relaciones y parametros del o los sistemas,permitiendo la integración de los mecanismos de acción mediante formulas o algoritmos de menor o mayor complejidad.</p>
+<p>Especificamente en este curso introductorio a optimización,abarcaremos la programación lineal la cual corresponde a un caso particular de la programación diferenciable.</p>
+<p><a id="Programación-Lineal"></a></p>
+<h2 id="Programaci%C3%B3n-Lineal-%F0%9F%A7%AE">Programación Lineal 🧮<a class="anchor-link" href="#Programaci%C3%B3n-Lineal-%F0%9F%A7%AE">¶</a></h2><p><a href="#Indice">Inicio ▲</a></p>
+<p>Cuando hablamos de programación lineal,estamos considerando el campo que se dedica a maximizar o minimizar una función lineal,a la cual llamamos función objetivo.En este contexto,las variables que estan presentes en esta función se encuentran sujetas a un conjunto de restriciones establecidas en un sistema de ecuaciones.</p>
+<p>Un modelo tipico de optimización lineal es como el que consideramos a continuación.</p>
+<p>$max \{c^Tx :x \in \Re \wedge Ax \leq b \wedge x \geq 0\}  $</p>
+<p>Pero tambien podemos desarrollar en su formulación estandar un caso particular.</p>
+<h4 id="Funci%C3%B3n-objetivo">Función objetivo<a class="anchor-link" href="#Funci%C3%B3n-objetivo">¶</a></h4><p>$f(x_{1},x_{2})=c_{1}x_{1}+c_{2}x_{2}$</p>
+<h4 id="Restricciones">Restricciones<a class="anchor-link" href="#Restricciones">¶</a></h4><p>$a_{11}x_{1}+a_{12}x_{2} \leq b_{1}$</p>
+<p>$a_{21}x_{1}+a_{22}x_{2} \leq b_{2}$</p>
+<p>$a_{31}x_{1}+a_{32}x_{2} \leq b_{3}$</p>
+<h4 id="Restricciones-de-no-negatividad">Restricciones de no negatividad<a class="anchor-link" href="#Restricciones-de-no-negatividad">¶</a></h4><p>$x_{1} \geq 0$</p>
+<p>$x_{2} \geq 0$</p>
+<p>Para la forma estandar de un modelo de programación lineal,podemos nuevamente considerar</p>
+<p>Generalmente el método para la resolución de problemas de programación lineal es el <strong>método simplex</strong> desarrollado por George Dantzig en 1947,el cual asegura encontrar el optimo global,sin embargo en algunos casos el algoritmo no presenta buenos resultados.Sin embargo existen otros métodos para la resolución de problemas de optimización lineal como el <strong>algoritmo de cambio de base</strong>,<strong>algoritmo de punto interior</strong>,<strong>algoritmo elipsoide</strong>,entre otros los que permiten asegurar optimos globales pero en mejores tiempos de resolución.</p>
+<p><a id="Programación-Entera"></a></p>
+<h2 id="Programaci%C3%B3n-Entera-%F0%9F%8E%92">Programación-Entera 🎒<a class="anchor-link" href="#Programaci%C3%B3n-Entera-%F0%9F%8E%92">¶</a></h2><p><a href="#Indice">Inicio ▲</a></p>
+<p>A diferencia de la programación lineal,en este caso si todas las variables desconocidas son enteras,entonces consideramos el problema como de programación entera.Cabe destacar que en este caso los valores de las variables pueden solo tomar valores enteros.Sin embargo,si las variables pueden solo tomar los valores 0 y 1,estamos frente a una subcategoria de la programación entera,llamada programación binaria.</p>
+<p>Algunos de los métodos mas utilizadas para la resolución de este tipo de modelos corresponden a los algoritmos <strong>Branch and bound</strong>,<strong>Branch and cut</strong>,<strong>planos de corte</strong>,entre otros.</p>
+<p>A continuación,veremos el formulamiento de un problema clasico de programación entera,especificamente de programacion binaria.</p>
+<h3 id="Problema-de-la-mochila-simple-(Knapsack-Problem)">Problema de la mochila simple (Knapsack Problem)<a class="anchor-link" href="#Problema-de-la-mochila-simple-(Knapsack-Problem)">¶</a></h3><p>Si disponemos de $n$ objetos para llevar en una mochila.Cada uno de los objetos,tiene un peso $p_{j}$ y tiene una utilidad relativa para el viaje de $c_{j}$.Finalmente consideramos que la mochila solo admite un peso máximo de $b$.</p>
+<p>En este problema buscamos tomar la decisión de cuales son aquellos objetos que debemos seleccionar para llevar en la mochila,de manera tal que maximicemos la utilidad total.</p>
+<p>Si consideramos que cada objeto que podemos llevar se corresponde con una variable que puede ser asignada o no,entonces podemos definir lo siguiente:</p>
+<p>$\begin{equation} x_{j} = \left\lbrace \begin{array}{ll} 1 &amp; \text{si el objeto j se selecciona }  \newline 0 &amp; \text{en otro caso }   \end{array} \right. \end{equation}$</p>
+<p>Luego podemos definir 2 restricciones para el problema,primero el limite de peso de la mochila de acuerdo a los pesos $p_j$</p>
+<p>$\sum_{j=1}^n p_{j}x_{j} \leq b$</p>
+<p>y luego la condición para que las variables sean binarias.</p>
+<p>$x_{j} \in \{0,1\} \ \ \  \ \ \ \forall \ \ \ j=1,...,n$</p>
+<p>Finalmente podemos definir la función objetivo que maximiza la utilidad relativa total</p>
+<p>$max \sum_{j=1}^n c_{j}x_{j}$</p>
+<h3 id="Problema-de-la-mochila-de-multiple-elecci%C3%B3n">Problema de la mochila de multiple elección<a class="anchor-link" href="#Problema-de-la-mochila-de-multiple-elecci%C3%B3n">¶</a></h3><p>A diferencia del problema anterior,en el problema de la mochila de múltiple elección los objetos se encuentran subdivididos en $k$ clases,en donde solo podemos tomar un item de cada una de las clases.De esta forma podemos formalizar el problema como</p>
+<p>$max \sum_{i=1}^k \sum_{j=1}^N v_{i,j}x_{i,j}$</p>
+<p>$\sum_{i=1}^k \sum_{j=1}^N w_{i,j} x_{i,j}$</p>
+<p>$\sum_{j=1}^N x_{i,j}=1 \ \ \ \ \forall \ \ 1\leq i \leq k$</p>
+<p>$x_{i,j} \in \{0,1\} \ \ \ \forall \ \  1 \leq i  \leq k ,\ j \in N$</p>
 
 </div>
 </div>
