@@ -14640,7 +14640,7 @@ body[data-format='mobile'] .jp-OutputArea-child .jp-OutputArea-output {
 <li><a href="#Programaci%C3%B3n-Lineal">Programación Lineal</a></li>
 <li><a href="#Programaci%C3%B3n-Entera">Programación Entera</a></li>
 <li><a href="#Libreria-Gurobi">Libreria Gurobi</a></li>
-<li><a href="#Modelaci%C3%B3n-con-Gurobi">Modelación con Gurobi</a></li>
+<li><a href="#Modelamiento-con-Gurobi">Modelamiento con Gurobi</a></li>
 </ol>
 
 </div>
@@ -14755,6 +14755,223 @@ body[data-format='mobile'] .jp-OutputArea-child .jp-OutputArea-output {
 <p>Sin embargo como ultimo paso y no menos importante,debemos seleccionar el tipo de licencia que queremos ocupar,la cual puede ser: (1) Licencia de evaluación comercial,(2) Licencia Academica,(3) Licencia de curso on-line y para (4) prueba en la nube.</p>
 <p>Ya teniendo todo listo,en la próxima sección utilizaremos la libreria gurobi para modelar y resolver algunos problemas clasicos de optimización.</p>
 
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<p><a id="Modelamiento-con-Gurobi"></a></p>
+<h2 id="Modelamiento-con-Gurobi-%F0%9F%8E%A8">Modelamiento con Gurobi 🎨<a class="anchor-link" href="#Modelamiento-con-Gurobi-%F0%9F%8E%A8">¶</a></h2><p><a href="#Indice">Inicio ▲</a></p>
+<p>Como ya vimos es posible modelar distintos procesos del mundo real bajo distintos paradigmas,en este caso buscamos optimizar ya sea maximizando o minimizando una función objetivo,la cual se encuentra sujeta a un conjunto de restricciones.Sin embargo la programación matematica generalmente se encuentra al inicio o a medio camino con la visión del negocio,esto implica que no nos centramos unicamente en modelar cualquier proceso,sino aquellos que sean criticos y/o haya una evidente oportunidad de mejora,la cual beneficie de forma directa a la empresa.</p>
+<p>Algunas de las áreas en donde existe una mayor aplicación y evidencias de los beneficios de esta tecnica es en:</p>
+<ul>
+<li>Manufactura</li>
+<li>Logistica</li>
+<li>Distribución electrica</li>
+<li>Finanzas</li>
+</ul>
+<h3 id="Pasos-para-crear-un-modelo-de-optimizaci%C3%B3n">Pasos para crear un modelo de optimización<a class="anchor-link" href="#Pasos-para-crear-un-modelo-de-optimizaci%C3%B3n">¶</a></h3><ul>
+<li><p>Para diseñar un modelo matematico que represente un sistema real,es necesario abstraer el sistema real mediante el modelamiento matematico.De esta forma primero es necesario definir un set de variables de decisión,las cuales deben ser representativas de aquellas decisiones que buscamos controlar en el sistema real.Sin embargo,estas pueden ser variables de tipo entero o continuas,lo cual podria influir posteriormente en el tiempo de resolución del modelo.</p>
+</li>
+<li><p>Junto a lo anterior debemos definir un set de restricciones,que capturen los limites globales que definen los valores que pueden tomar las variables de decisión</p>
+</li>
+<li><p>Finalmente debemos diseñar la función objetivo,la cual captura en gran parte el objetivo principal de la empresa.Esto implica definir si se quiere maximizar o minimizar el costo de la operación completa del proceso y como las variables de decisión interactuan entre ellas para la definición del objetivo.</p>
+</li>
+</ul>
+<h3 id="Dise%C3%B1ando-un-modelo---Problema-del-carpintero">Diseñando un modelo - Problema del carpintero<a class="anchor-link" href="#Dise%C3%B1ando-un-modelo---Problema-del-carpintero">¶</a></h3><p>Para este primer caso resolveremos un problema clasico correspondiente al problema del carpintero.El problema al que se enfrenta el carpintero,corresponde a cuantas mesas y sillas debe fabricar para maximizar sus ingresos.</p>
+<p>$max \ \ 5x_{1}+3x_{2}$</p>
+<p>$2x_{1}+x_{2}&lt;=40$</p>
+<p>$x_{1}+2x_{2}&lt;=50$</p>
+<p>$x_{i} \geq 0$</p>
+<p>De acuerdo al modelo planteado, los valores 5 y 3 que acompañan a la función objetivo corresponden a los ingresos netos por la cantidad de $mesas \ \ (x_{1}) \ \ y \ \ sillas (x_{2})$.Luego tenemos la primera restriccion de mano de obra y la segunda de materiales.En la primera solo se cuentan con 40 horas laborales por semana y una mesa se demora 2 horas en construirse y las sillas demoran 1 hora.En cambio para la materia prima se cuenta con 50 unidades por semana,en donde las mesas requieren de 1 materia prima y las sillas de 2.</p>
+
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [33]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">gurobipy</span> <span class="kn">import</span> <span class="o">*</span>
+
+<span class="n">m</span><span class="o">=</span><span class="n">Model</span><span class="p">()</span>
+<span class="n">x_1</span><span class="o">=</span><span class="n">m</span><span class="o">.</span><span class="n">addVar</span><span class="p">(</span><span class="n">vtype</span><span class="o">=</span><span class="n">GRB</span><span class="o">.</span><span class="n">CONTINUOUS</span><span class="p">,</span><span class="n">name</span><span class="o">=</span><span class="s2">"x_1"</span><span class="p">)</span>
+<span class="n">x_2</span><span class="o">=</span><span class="n">m</span><span class="o">.</span><span class="n">addVar</span><span class="p">(</span><span class="n">vtype</span><span class="o">=</span><span class="n">GRB</span><span class="o">.</span><span class="n">CONTINUOUS</span><span class="p">,</span><span class="n">name</span><span class="o">=</span><span class="s2">"x_2"</span><span class="p">)</span>
+
+<span class="n">c_1</span><span class="o">=</span><span class="mi">5</span>
+<span class="n">c_2</span><span class="o">=</span><span class="mi">3</span>
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [34]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-ipython3"><pre><span></span>    <span class="n">m</span><span class="o">.</span><span class="n">setObjective</span><span class="p">(</span><span class="n">c_1</span><span class="o">*</span><span class="n">x_1</span><span class="o">+</span><span class="n">c_2</span><span class="o">*</span><span class="n">x_2</span><span class="p">,</span><span class="n">GRB</span><span class="o">.</span><span class="n">MAXIMIZE</span><span class="p">)</span>
+
+    <span class="n">c1</span><span class="o">=</span><span class="n">m</span><span class="o">.</span><span class="n">addConstr</span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">x_1</span><span class="o">+</span><span class="n">x_2</span><span class="o">&lt;=</span><span class="mi">40</span><span class="p">)</span>
+    <span class="n">c2</span><span class="o">=</span><span class="n">m</span><span class="o">.</span><span class="n">addConstr</span><span class="p">(</span><span class="n">x_1</span><span class="o">+</span><span class="mi">2</span><span class="o">*</span><span class="n">x_2</span><span class="o">&lt;=</span><span class="mi">50</span><span class="p">)</span>
+    
+    <span class="n">m</span><span class="o">.</span><span class="n">optimize</span><span class="p">()</span>
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
+<div class="jp-Cell-outputWrapper">
+<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
+</div>
+
+
+<div class="jp-OutputArea jp-Cell-outputArea">
+<div class="jp-OutputArea-child">
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+
+
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain">
+<pre>Gurobi Optimizer version 9.5.2 build v9.5.2rc0 (win64)
+Thread count: 4 physical cores, 8 logical processors, using up to 8 threads
+Optimize a model with 2 rows, 2 columns and 4 nonzeros
+Model fingerprint: 0x15d58d31
+Coefficient statistics:
+  Matrix range     [1e+00, 2e+00]
+  Objective range  [3e+00, 5e+00]
+  Bounds range     [0e+00, 0e+00]
+  RHS range        [4e+01, 5e+01]
+Presolve time: 0.01s
+Presolved: 2 rows, 2 columns, 4 nonzeros
+
+Iteration    Objective       Primal Inf.    Dual Inf.      Time
+       0    8.0000000e+30   3.000000e+30   8.000000e+00      0s
+       2    1.1000000e+02   0.000000e+00   0.000000e+00      0s
+
+Solved in 2 iterations and 0.03 seconds (0.00 work units)
+Optimal objective  1.100000000e+02
+</pre>
+</div>
+</div>
+
+</div>
+
+</div>
+
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [29]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">m</span><span class="o">.</span><span class="n">getVars</span><span class="p">()</span>
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
+<div class="jp-Cell-outputWrapper">
+<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
+</div>
+
+
+<div class="jp-OutputArea jp-Cell-outputArea">
+<div class="jp-OutputArea-child jp-OutputArea-executeResult">
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[29]:</div>
+
+
+
+
+<div class="jp-RenderedText jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/plain">
+<pre>[&lt;gurobi.Var x_1 (value 1.0)&gt;, &lt;gurobi.Var x_2 (value 1.0)&gt;]</pre>
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [35]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">m</span><span class="o">.</span><span class="n">objval</span>
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
+<div class="jp-Cell-outputWrapper">
+<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
+</div>
+
+
+<div class="jp-OutputArea jp-Cell-outputArea">
+<div class="jp-OutputArea-child jp-OutputArea-executeResult">
+    
+    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[35]:</div>
+
+
+
+
+<div class="jp-RenderedText jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/plain">
+<pre>110.0</pre>
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<h2 id="Problema-de-transporte">Problema de transporte<a class="anchor-link" href="#Problema-de-transporte">¶</a></h2>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<h2 id="Problema-de-la-mochila">Problema de la mochila<a class="anchor-link" href="#Problema-de-la-mochila">¶</a></h2>
 </div>
 </div>
 </div>
