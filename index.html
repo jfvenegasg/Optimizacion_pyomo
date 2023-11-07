@@ -14850,7 +14850,7 @@ Requirement already satisfied: ply in c:\users\administrator\appdata\local\progr
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[6]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[1]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">pyomo.environ</span> <span class="kn">import</span> <span class="o">*</span>
@@ -14868,152 +14868,12 @@ Requirement already satisfied: ply in c:\users\administrator\appdata\local\progr
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<p>Una vez cargada la librería,creamos un modelo genérico con la función *<strong>ConcreteModel()</strong>*.Luego en el modelo deberemos generar tanto las variables de decisión que usaremos en el modelo,asi como las constantes,restricciones y función objetivo.</p>
+<p>Una vez cargada la librería,creamos un modelo genérico con la función <strong>ConcreteModel()</strong>.Luego en el modelo deberemos generar tanto las variables de decisión que usaremos en el modelo,asi como las constantes,restricciones y función objetivo.</p>
 
 </div>
 </div>
 </div>
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[14]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-     <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">modelo</span><span class="o">=</span><span class="n">ConcreteModel</span><span class="p">()</span>
-
-<span class="n">modelo</span><span class="o">.</span><span class="n">x1</span><span class="o">=</span><span class="n">Var</span><span class="p">(</span><span class="n">within</span><span class="o">=</span><span class="n">NonNegativeReals</span><span class="p">)</span>
-<span class="n">modelo</span><span class="o">.</span><span class="n">x2</span><span class="o">=</span><span class="n">Var</span><span class="p">(</span><span class="n">within</span><span class="o">=</span><span class="n">NonNegativeReals</span><span class="p">)</span>
-
-<span class="n">modelo</span><span class="o">.</span><span class="n">objetivo</span> <span class="o">=</span> <span class="n">Objective</span><span class="p">(</span><span class="n">expr</span><span class="o">=</span><span class="mi">5</span> <span class="o">*</span> <span class="n">modelo</span><span class="o">.</span><span class="n">x1</span> <span class="o">+</span> <span class="mi">3</span> <span class="o">*</span> <span class="n">modelo</span><span class="o">.</span><span class="n">x2</span><span class="p">,</span> <span class="n">sense</span><span class="o">=</span><span class="n">maximize</span><span class="p">)</span>
-
-<span class="n">modelo</span><span class="o">.</span><span class="n">restriccion1</span> <span class="o">=</span> <span class="n">Constraint</span><span class="p">(</span><span class="n">expr</span><span class="o">=</span><span class="mi">2</span> <span class="o">*</span> <span class="n">modelo</span><span class="o">.</span><span class="n">x1</span> <span class="o">+</span> <span class="n">modelo</span><span class="o">.</span><span class="n">x2</span> <span class="o">&lt;=</span> <span class="mi">40</span><span class="p">)</span>
-<span class="n">modelo</span><span class="o">.</span><span class="n">restriccion2</span> <span class="o">=</span> <span class="n">Constraint</span><span class="p">(</span><span class="n">expr</span><span class="o">=</span><span class="n">modelo</span><span class="o">.</span><span class="n">x1</span> <span class="o">+</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">modelo</span><span class="o">.</span><span class="n">x2</span> <span class="o">&lt;=</span> <span class="mi">50</span><span class="p">)</span>
-
-<span class="n">glpsol_path</span> <span class="o">=</span> <span class="s1">'C:\winglpk-4.65\glpk-4.65\w64\glpsol.exe'</span>
-<span class="n">solver</span> <span class="o">=</span> <span class="n">SolverFactory</span><span class="p">(</span><span class="s1">'glpk'</span><span class="p">,</span> <span class="n">executable</span><span class="o">=</span><span class="n">glpsol_path</span><span class="p">)</span>  <span class="c1"># Puedes cambiar el solucionador según tu preferencia</span>
-<span class="n">resultado</span> <span class="o">=</span> <span class="n">solver</span><span class="o">.</span><span class="n">solve</span><span class="p">(</span><span class="n">modelo</span><span class="p">)</span>
-</pre></div>
-
-     </div>
-</div>
-</div>
-</div>
-
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[15]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-     <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Imprimir resultados</span>
-<span class="n">modelo</span><span class="o">.</span><span class="n">pprint</span><span class="p">()</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">"</span><span class="se">\n</span><span class="s2">Resultados:"</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">"x1 ="</span><span class="p">,</span> <span class="n">value</span><span class="p">(</span><span class="n">modelo</span><span class="o">.</span><span class="n">x1</span><span class="p">))</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">"x2 ="</span><span class="p">,</span> <span class="n">value</span><span class="p">(</span><span class="n">modelo</span><span class="o">.</span><span class="n">x2</span><span class="p">))</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">"Valor óptimo de la función objetivo:"</span><span class="p">,</span> <span class="n">value</span><span class="p">(</span><span class="n">modelo</span><span class="o">.</span><span class="n">objetivo</span><span class="p">))</span>
-</pre></div>
-
-     </div>
-</div>
-</div>
-</div>
-
-<div class="jp-Cell-outputWrapper">
-<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
-</div>
-
-
-<div class="jp-OutputArea jp-Cell-outputArea">
-<div class="jp-OutputArea-child">
-    
-    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
-
-
-<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain">
-<pre>2 Var Declarations
-    x1 : Size=1, Index=None
-        Key  : Lower : Value : Upper : Fixed : Stale : Domain
-        None :     0 :  10.0 :  None : False : False : NonNegativeReals
-    x2 : Size=1, Index=None
-        Key  : Lower : Value : Upper : Fixed : Stale : Domain
-        None :     0 :  20.0 :  None : False : False : NonNegativeReals
-
-1 Objective Declarations
-    objetivo : Size=1, Index=None, Active=True
-        Key  : Active : Sense    : Expression
-        None :   True : maximize : 5*x1 + 3*x2
-
-2 Constraint Declarations
-    restriccion1 : Size=1, Index=None, Active=True
-        Key  : Lower : Body      : Upper : Active
-        None :  -Inf : 2*x1 + x2 :  40.0 :   True
-    restriccion2 : Size=1, Index=None, Active=True
-        Key  : Lower : Body      : Upper : Active
-        None :  -Inf : x1 + 2*x2 :  50.0 :   True
-
-5 Declarations: x1 x2 objetivo restriccion1 restriccion2
-
-Resultados:
-x1 = 10.0
-x2 = 20.0
-Valor óptimo de la función objetivo: 110.0
-</pre>
-</div>
-</div>
-
-</div>
-
-</div>
-
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<p>Para crear las variables $x_{1}$ y $x_{2}$ dentro del modelo, usamos la función *<strong>addVar()</strong>*.En esta debemos especificar si la variable es continua,entera o binaria.Luego definimos las constantes correspondientes a los ingresos netos por la cantidad tanto de mesas como de sillas.</p>
-
-</div>
-</div>
-</div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[5]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-     <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">c1</span><span class="o">=</span><span class="n">m</span><span class="o">.</span><span class="n">addConstr</span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">x_1</span><span class="o">+</span><span class="n">x_2</span><span class="o">&lt;=</span><span class="mi">40</span><span class="p">)</span>
-<span class="n">c2</span><span class="o">=</span><span class="n">m</span><span class="o">.</span><span class="n">addConstr</span><span class="p">(</span><span class="n">x_1</span><span class="o">+</span><span class="mi">2</span><span class="o">*</span><span class="n">x_2</span><span class="o">&lt;=</span><span class="mi">50</span><span class="p">)</span>
-
-<span class="n">m</span><span class="o">.</span><span class="n">setObjective</span><span class="p">(</span><span class="n">c_1</span><span class="o">*</span><span class="n">x_1</span><span class="o">+</span><span class="n">c_2</span><span class="o">*</span><span class="n">x_2</span><span class="p">,</span><span class="n">GRB</span><span class="o">.</span><span class="n">MAXIMIZE</span><span class="p">)</span>
-</pre></div>
-
-     </div>
-</div>
-</div>
-</div>
-
-</div>
-<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<p>Luego agregamos las 2 restricciones correspondientes a $2x_{1}+x_{2}\leq 40$ y $x_{1}+2x_{2}$,mediante la función *<strong>addConstr()</strong><em>.Finalmente podemos definir la función objetivo mediante la funcion </em><strong>setObjective()</strong>*,en donde ademas debemos definir si queremos maximizar o minimizar la función.</p>
-<p>Una vez definimos todos los elementos necesarios para el modelo de optimización,podemos resolver el problema mediante la función *<strong>optimize()</strong>*</p>
-
-</div>
-</div>
-</div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -15021,50 +14881,12 @@ Valor óptimo de la función objetivo: 110.0
 <div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[7]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">m</span><span class="o">.</span><span class="n">optimize</span><span class="p">()</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">modelo</span><span class="o">=</span><span class="n">ConcreteModel</span><span class="p">()</span>
 </pre></div>
 
      </div>
 </div>
 </div>
-</div>
-
-<div class="jp-Cell-outputWrapper">
-<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
-</div>
-
-
-<div class="jp-OutputArea jp-Cell-outputArea">
-<div class="jp-OutputArea-child">
-    
-    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
-
-
-<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain">
-<pre>Gurobi Optimizer version 9.5.2 build v9.5.2rc0 (win64)
-Thread count: 4 physical cores, 8 logical processors, using up to 8 threads
-Optimize a model with 2 rows, 2 columns and 4 nonzeros
-Model fingerprint: 0x15d58d31
-Coefficient statistics:
-  Matrix range     [1e+00, 2e+00]
-  Objective range  [3e+00, 5e+00]
-  Bounds range     [0e+00, 0e+00]
-  RHS range        [4e+01, 5e+01]
-Presolve time: 0.02s
-Presolved: 2 rows, 2 columns, 4 nonzeros
-
-Iteration    Objective       Primal Inf.    Dual Inf.      Time
-       0    8.0000000e+30   3.000000e+30   8.000000e+00      0s
-       2    1.1000000e+02   0.000000e+00   0.000000e+00      0s
-
-Solved in 2 iterations and 0.05 seconds (0.00 work units)
-Optimal objective  1.100000000e+02
-</pre>
-</div>
-</div>
-
-</div>
-
 </div>
 
 </div>
@@ -15074,21 +14896,21 @@ Optimal objective  1.100000000e+02
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<p>Como se puede observar,el optimizador entrega bastante información una vez resuelto el problema.Primero nos da un detalle de la versión junto con las caracteristicas de la maquina en donde estamos ejecutando el software,luego nos da información respecto al modelo en donde incluso nos muestra cuanto tiempo demora en la resolución...en este caso demoro 0.05s luego de 2 iteraciones,en realidad no es un problema muy complejo 😅.</p>
-<p>Finalmente nos entrega aspectos generales de la resolución como el Objective,Primal Inf. y Dual Inf.Sin embargo si quisieramos llamar solo a algunos valores especificos como el valor que toma cada variable de decisión,podemos usar la función *<strong>getVars()</strong>*</p>
+<p>Para crear las variables $x_{1}$ y $x_{2}$ dentro del modelo, usamos la función *<strong>Var()</strong>* y en esta vamos a especificar que las variables sean enteras  y no negativas,ademas especificamos que pueden tomar cualquier valor mayor a 0.</p>
 
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[18]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[8]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">m</span><span class="o">.</span><span class="n">getVars</span><span class="p">()</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">modelo</span><span class="o">.</span><span class="n">x1</span><span class="o">=</span><span class="n">Var</span><span class="p">(</span><span class="n">within</span><span class="o">=</span><span class="n">NonNegativeIntegers</span><span class="p">,</span><span class="n">bounds</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="kc">None</span><span class="p">))</span>
+<span class="n">modelo</span><span class="o">.</span><span class="n">x2</span><span class="o">=</span><span class="n">Var</span><span class="p">(</span><span class="n">within</span><span class="o">=</span><span class="n">NonNegativeIntegers</span><span class="p">,</span><span class="n">bounds</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="kc">None</span><span class="p">))</span>
 </pre></div>
 
      </div>
@@ -15096,27 +14918,64 @@ Optimal objective  1.100000000e+02
 </div>
 </div>
 
-<div class="jp-Cell-outputWrapper">
-<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
 </div>
-
-
-<div class="jp-OutputArea jp-Cell-outputArea">
-<div class="jp-OutputArea-child jp-OutputArea-executeResult">
-    
-    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[18]:</div>
-
-
-
-
-<div class="jp-RenderedText jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/plain">
-<pre>[&lt;gurobi.Var x_1 (value 10.0)&gt;, &lt;gurobi.Var x_2 (value 20.0)&gt;]</pre>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<p>Ahora especificamos la función objetivo del modelo y las restricciones</p>
 
 </div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">modelo</span><span class="o">.</span><span class="n">objetivo</span> <span class="o">=</span> <span class="n">Objective</span><span class="p">(</span><span class="n">expr</span><span class="o">=</span><span class="mi">5</span> <span class="o">*</span> <span class="n">modelo</span><span class="o">.</span><span class="n">x1</span> <span class="o">+</span> <span class="mi">3</span> <span class="o">*</span> <span class="n">modelo</span><span class="o">.</span><span class="n">x2</span><span class="p">,</span> <span class="n">sense</span><span class="o">=</span><span class="n">maximize</span><span class="p">)</span>
 
+<span class="n">modelo</span><span class="o">.</span><span class="n">restriccion1</span> <span class="o">=</span> <span class="n">Constraint</span><span class="p">(</span><span class="n">expr</span><span class="o">=</span><span class="mi">2</span> <span class="o">*</span> <span class="n">modelo</span><span class="o">.</span><span class="n">x1</span> <span class="o">+</span> <span class="n">modelo</span><span class="o">.</span><span class="n">x2</span> <span class="o">&lt;=</span> <span class="mi">40</span><span class="p">)</span>
+<span class="n">modelo</span><span class="o">.</span><span class="n">restriccion2</span> <span class="o">=</span> <span class="n">Constraint</span><span class="p">(</span><span class="n">expr</span><span class="o">=</span><span class="n">modelo</span><span class="o">.</span><span class="n">x1</span> <span class="o">+</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">modelo</span><span class="o">.</span><span class="n">x2</span> <span class="o">&lt;=</span> <span class="mi">50</span><span class="p">)</span>
+</pre></div>
+
+     </div>
+</div>
+</div>
 </div>
 
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<p>Una vez especificado el modelo,tener que definir el solver que utilizaremos.En este caso usamos <strong>glpk</strong>,por lo tanto le tenemos que pasar la ruta</p>
+
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">glpsol_path</span> <span class="o">=</span> <span class="s1">'C:\winglpk-4.65\glpk-4.65\w64\glpsol.exe'</span>
+<span class="n">solver</span> <span class="o">=</span> <span class="n">SolverFactory</span><span class="p">(</span><span class="s1">'glpk'</span><span class="p">,</span> <span class="n">executable</span><span class="o">=</span><span class="n">glpsol_path</span><span class="p">)</span>  
+</pre></div>
+
+     </div>
+</div>
+</div>
 </div>
 
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
@@ -15127,7 +14986,7 @@ Optimal objective  1.100000000e+02
 <div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">Pero</span> <span class="n">tambien</span> <span class="n">podriamos</span> <span class="n">obtener</span> <span class="n">el</span> <span class="n">valor</span> <span class="n">por</span> <span class="n">separado</span> <span class="n">de</span> <span class="n">la</span> <span class="n">función</span> <span class="n">objetivo</span> <span class="n">con</span> <span class="n">la</span> <span class="n">función</span> <span class="o">***</span><span class="n">objval</span><span class="p">()</span><span class="o">***</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">Si</span> <span class="n">definimos</span> <span class="n">todo</span> <span class="n">de</span> <span class="n">forma</span> <span class="n">correcta</span><span class="p">,</span> <span class="n">ahora</span> <span class="n">podemos</span> <span class="n">solucionar</span> <span class="n">el</span> <span class="n">modelo</span><span class="o">.</span>
 </pre></div>
 
      </div>
@@ -15135,6 +14994,34 @@ Optimal objective  1.100000000e+02
 </div>
 </div>
 
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+     <div class="CodeMirror cm-s-jupyter">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">resultado</span> <span class="o">=</span> <span class="n">solver</span><span class="o">.</span><span class="n">solve</span><span class="p">(</span><span class="n">modelo</span><span class="p">)</span>
+</pre></div>
+
+     </div>
+</div>
+</div>
+</div>
+
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<p>Una vez resulto el modelo,podemos verificar los valores de las variables del modelo junto al valor de la funcion objetivo.</p>
+
+</div>
+</div>
+</div>
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
@@ -15143,7 +15030,12 @@ Optimal objective  1.100000000e+02
 <div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[10]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">m</span><span class="o">.</span><span class="n">objval</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Mostrar valor de funcion objetivo y variables</span>
+<span class="c1">#modelo.pprint()</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"</span><span class="se">\n</span><span class="s2">Resultados:"</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"Valor óptimo de la función objetivo:"</span><span class="p">,</span> <span class="n">value</span><span class="p">(</span><span class="n">modelo</span><span class="o">.</span><span class="n">objetivo</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"x1 ="</span><span class="p">,</span> <span class="n">value</span><span class="p">(</span><span class="n">modelo</span><span class="o">.</span><span class="n">x1</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"x2 ="</span><span class="p">,</span> <span class="n">value</span><span class="p">(</span><span class="n">modelo</span><span class="o">.</span><span class="n">x2</span><span class="p">))</span>
 </pre></div>
 
      </div>
@@ -15157,17 +15049,19 @@ Optimal objective  1.100000000e+02
 
 
 <div class="jp-OutputArea jp-Cell-outputArea">
-<div class="jp-OutputArea-child jp-OutputArea-executeResult">
+<div class="jp-OutputArea-child">
     
-    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[10]:</div>
+    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 
 
-
-
-<div class="jp-RenderedText jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/plain">
-<pre>110.0</pre>
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain">
+<pre>
+Resultados:
+Valor óptimo de la función objetivo: 110.0
+x1 = 10.0
+x2 = 20.0
+</pre>
 </div>
-
 </div>
 
 </div>
@@ -15181,7 +15075,23 @@ Optimal objective  1.100000000e+02
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<p>De esta forma podemos corrobar el valor del objetivo mediante el reemplazo de las variables de decisión en la función objetivo.De esta forma tenemos que $5x_{1}+3x_{2}=5*10+3*20=110$,pudiendo comprobar el optimo entregado por el optimizador.</p>
+<p>Podemos ver que los valores de las variables son $x_{1}=10$ y $x_{2}=20$.De esta forma si reemplazamos los valores en la restricciones veremos que ambas se cumplen y en la funcion objetivo obtenemos el maximo de <strong>110</strong></p>
+
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<ul>
+<li>Restriccion 1     $\rightarrow 2*(10)+20 \leq 40$</li>
+<li>Restriccion 2     $\rightarrow 10+2*(20) \leq 50$</li>
+<li>Funcion Objetivo  $\rightarrow 5x_{1}+3x_{2}=5*10+3*20=50+60=110 $</li>
+</ul>
 
 </div>
 </div>
