@@ -14639,7 +14639,12 @@ body[data-format='mobile'] .jp-OutputArea-child .jp-OutputArea-output {
 <li><a href="#Modelamiento-Matematico">Modelamiento Matemático</a></li>
 <li><a href="#Programaci%C3%B3n-Lineal">Programación Lineal</a></li>
 <li><a href="#Programaci%C3%B3n-Entera">Programación Entera</a></li>
-<li><a href="#Libreria-Gurobi">Librería Gurobi</a></li>
+<li><a href="#Librer%C3%ADa-Pyomo">Librería Pyomo</a></li>
+<li><a href="#Modelamiento-con-Pyomo">Modelamiento con Pyomo</a><ol>
+<li><a href="#Problema-del-carpintero">Problema del carpintero</a></li>
+<li><a href="#Problema-de-transporte">Problema de transporte</a></li>
+</ol>
+</li>
 <li><a href="#Modelamiento-con-Gurobi">Modelamiento con Gurobi</a></li>
 </ol>
 
@@ -14726,8 +14731,8 @@ body[data-format='mobile'] .jp-OutputArea-child .jp-OutputArea-output {
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<p><a id='Libreria-Pyomo'></a></p>
-<h2 id="Libreria-Pyomo-%F0%9F%8E%A8">Libreria Pyomo &#127912;<a class="anchor-link" href="#Libreria-Pyomo-%F0%9F%8E%A8">&#182;</a></h2><p><a href="#Indice">Inicio ▲</a></p>
+<p><a id='Librería-Pyomo'></a></p>
+<h2 id="Librer%C3%ADa-Pyomo-%F0%9F%8E%A8">Librer&#237;a Pyomo &#127912;<a class="anchor-link" href="#Librer%C3%ADa-Pyomo-%F0%9F%8E%A8">&#182;</a></h2><p><a href="#Indice">Inicio ▲</a></p>
 <p>Pyomo es un software open source desarrollado para python para el modelamiento y resolución de modelos de optimización Lineasl,Cuadratica,No-lineal,Estocastica,entre otros.</p>
 <p>En este curso introductorio,utilizaremos la interfaz de JupyterLab para la resolución de problemas de optimización haciendo uso de la libreria Pyomo.</p>
 
@@ -14816,8 +14821,8 @@ Requirement already satisfied: ply in c:\users\administrator\appdata\local\progr
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<p><a id='Modelamiento-con-Gurobi'></a></p>
-<h2 id="Modelamiento-con-Gurobi-%F0%9F%9A%80">Modelamiento con Gurobi &#128640;<a class="anchor-link" href="#Modelamiento-con-Gurobi-%F0%9F%9A%80">&#182;</a></h2><p><a href="#Indice">Inicio ▲</a></p>
+<p><a id='Modelamiento-con-Pyomo'></a></p>
+<h3 id="Modelamiento-con-Pyomo-%F0%9F%9A%80">Modelamiento con Pyomo &#128640;<a class="anchor-link" href="#Modelamiento-con-Pyomo-%F0%9F%9A%80">&#182;</a></h3><p><a href="#Indice">Inicio ▲</a></p>
 <p>Como ya vimos es posible modelar distintos procesos del mundo real bajo distintos paradigmas,en este caso buscamos optimizar ya sea maximizando o minimizando una función objetivo,la cual se encuentra sujeta a un conjunto de restricciones.Sin embargo la programación matemática generalmente se encuentra al inicio o a medio camino con la visión del negocio,esto implica que no nos centramos unicamente en modelar cualquier proceso,sino aquellos que sean críticos y/o haya una evidente oportunidad de mejora,la cual beneficie de forma directa a la empresa.</p>
 <p>Algunas de las áreas en donde existe una mayor aplicación y evidencias de los beneficios de esta técnica es en:</p>
 <ul>
@@ -14834,7 +14839,20 @@ Requirement already satisfied: ply in c:\users\administrator\appdata\local\progr
 <li><p>Finalmente debemos diseñar la función objetivo,la cual captura en gran parte el objetivo principal de la empresa.Esto implica definir si se quiere maximizar o minimizar el costo de la operación completa del proceso y como las variables de decisión interactuan entre ellas para la definición del objetivo.</p>
 </li>
 </ul>
-<h3 id="Dise%C3%B1ando-un-primer-modelo---Problema-del-carpintero">Dise&#241;ando un primer modelo - Problema del carpintero<a class="anchor-link" href="#Dise%C3%B1ando-un-primer-modelo---Problema-del-carpintero">&#182;</a></h3><p>Para este primer caso resolveremos un problema clásico correspondiente al problema del carpintero.El problema al que se enfrenta el carpintero,corresponde a cuantas mesas y sillas debe fabricar para maximizar sus ingresos.</p>
+
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
+<p><a id='Problema-del-carpintero'></a></p>
+<h3 id="Problema-del-carpintero">Problema del carpintero<a class="anchor-link" href="#Problema-del-carpintero">&#182;</a></h3><p><a href="#Indice">Inicio ▲</a></p>
+<p>Para este primer caso resolveremos un problema clásico correspondiente al problema del carpintero.El problema al que se enfrenta el carpintero,corresponde a cuantas mesas y sillas debe fabricar para maximizar sus ingresos.</p>
 <p>$max \ \ 5x_{1}+3x_{2}$</p>
 <p>$2x_{1}+x_{2}&lt;=40$</p>
 <p>$x_{1}+2x_{2}&lt;=50$</p>
@@ -14850,7 +14868,7 @@ Requirement already satisfied: ply in c:\users\administrator\appdata\local\progr
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[1]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[7]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">pyomo.environ</span> <span class="kn">import</span> <span class="o">*</span>
@@ -14878,7 +14896,7 @@ Requirement already satisfied: ply in c:\users\administrator\appdata\local\progr
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[7]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[8]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">modelo</span><span class="o">=</span><span class="n">ConcreteModel</span><span class="p">()</span>
@@ -14906,7 +14924,7 @@ Requirement already satisfied: ply in c:\users\administrator\appdata\local\progr
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[8]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[9]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">modelo</span><span class="o">.</span><span class="n">x1</span><span class="o">=</span><span class="n">Var</span><span class="p">(</span><span class="n">within</span><span class="o">=</span><span class="n">NonNegativeIntegers</span><span class="p">,</span><span class="n">bounds</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="kc">None</span><span class="p">))</span>
@@ -14935,7 +14953,7 @@ Requirement already satisfied: ply in c:\users\administrator\appdata\local\progr
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[10]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">modelo</span><span class="o">.</span><span class="n">objetivo</span> <span class="o">=</span> <span class="n">Objective</span><span class="p">(</span><span class="n">expr</span><span class="o">=</span><span class="mi">5</span> <span class="o">*</span> <span class="n">modelo</span><span class="o">.</span><span class="n">x1</span> <span class="o">+</span> <span class="mi">3</span> <span class="o">*</span> <span class="n">modelo</span><span class="o">.</span><span class="n">x2</span><span class="p">,</span> <span class="n">sense</span><span class="o">=</span><span class="n">maximize</span><span class="p">)</span>
@@ -14966,7 +14984,7 @@ Requirement already satisfied: ply in c:\users\administrator\appdata\local\progr
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[11]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">glpsol_path</span> <span class="o">=</span> <span class="s1">'C:\winglpk-4.65\glpk-4.65\w64\glpsol.exe'</span>
@@ -14999,7 +15017,7 @@ Requirement already satisfied: ply in c:\users\administrator\appdata\local\progr
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[12]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">resultado</span> <span class="o">=</span> <span class="n">solver</span><span class="o">.</span><span class="n">solve</span><span class="p">(</span><span class="n">modelo</span><span class="p">)</span>
@@ -15027,7 +15045,7 @@ Requirement already satisfied: ply in c:\users\administrator\appdata\local\progr
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[10]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[13]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Mostrar valor de funcion objetivo y variables</span>
@@ -15103,8 +15121,10 @@ x2 = 20.0
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h2 id="Problema-de-transporte">Problema de transporte<a class="anchor-link" href="#Problema-de-transporte">&#182;</a></h2><p>Otro de los problemas de bastante interés y ampliamente desarrollado en la literatura corresponde a los problemas de transporte,específicamente estamos considerando problemas en donde las variables de decisión toman valores enteros.A pesar de que es posible utilizar el algoritmo simplex para su resolución,tambien es posible la utilización de otros algoritmos mas eficientes para su resolución.</p>
-<p>Un caso de los problemas de transporte corresponde al suministro que deben realizar $m$ almacenes a $n$ destinos de un determinado producto.Luego la capacidad de la oferta de cada uno de los orígenes $i=1,...,m.$,mientas que la demanda de cada destino $j=1,...,n$ es $b_{j}$.Luego el costo de enviar una unidad de producto del origen $i$ al destino $j$ corresponde a $c_{i,j}$.Asi buscamos determinar cual es la cantidad de unidades de producto que se deben enviar desde los origenes $i$ a los destinos $j$,pero minimizando el costo total de envío y ademas asegurando la demanda en los destinos y no excediendo la capacidad de los origenes.</p>
+<p><a id='Problema-del-carpintero'></a></p>
+<h3 id="Problema-de-transporte">Problema de transporte<a class="anchor-link" href="#Problema-de-transporte">&#182;</a></h3><p><a href="#Indice">Inicio ▲</a></p>
+<p>Otro de los problemas de bastante interés y ampliamente desarrollado en la literatura corresponde a los problemas de transporte,específicamente estamos considerando problemas en donde las variables de decisión toman valores enteros.</p>
+<p>Un caso clasico de los problemas de transporte corresponde al suministro que deben realizar $m_{i}$ almacenes a $n_{j}$ destinos de un determinado producto.Luego la capacidad de la oferta de cada uno de los orígenes $i=1,...,m.$,mientas que la demanda de cada destino $j=1,...,n$ es $b_{j}$.Luego el costo de enviar una unidad de producto del origen $i$ al destino $j$ corresponde a $c_{i,j}$.De esta forma buscamos determinar la cantidad optima de unidades de producto que se deben enviar desde los origenes $i$ a los destinos $j$.Esto se realiza minimizando el costo total de envío, asegurando la demanda en los destinos y no excediendo la capacidad de los origenes.</p>
 <p>De esta forma podemos formalizar el problema de la siguiente forma:</p>
 <p>$min \sum_{i=1}^m \sum_{j=1}^n c_{i,j} x_{i,j}$</p>
 <p>sujeto a las siguientes restricciones</p>
@@ -15122,20 +15142,17 @@ x2 = 20.0
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<p>Ahora consideremos un caso particular del problema de transporte, en donde 3 almacenes que deben abastecer 6 destinos de un producto.En donde la oferta de cada almacen es 2.045,2.234 y 1.800 y la demanda a suplir por cada destino es de 1.523,1.768, 850 y 1.918 Luego tenemos que los costos de enviar productos desde cada almacen a cada origen se muestran en la siguiente tabla.</p>
+<p>Ahora consideremos un caso particular del problema de transporte, en donde 3 almacenes que deben abastecer 3 destinos de un producto.En donde la oferta de cada almacen es 2.045,2.234 y 1.800 y la demanda a suplir en cada destino es de 1.523,1.768 y 850 Luego tenemos que los costos de enviar productos desde cada almacen a cada origen se muestran en la siguiente tabla.</p>
 <table ><tr><th> Costo de envio<th><th> Valor <tr><tr>
 <tr><td> $c_{1,1}$  <td><td> 10.200     <td><tr>
 <tr><td> $c_{1,2}$  <td><td> 13.450 <td><tr>
 <tr><td> $c_{1,3}$  <td><td> 11.890  <td><tr>
-<tr><td> $c_{1,4}$  <td><td> 19.324        <td><tr>
 <tr><td> $c_{2,1}$  <td><td> 15.912      <td><tr>
 <tr><td> $c_{2,2}$  <td><td> 15.340  <td><tr>
 <tr><td> $c_{2,3}$  <td><td> 12.670  <td><tr>
-<tr><td> $c_{2,4}$  <td><td> 11.843       <td><tr>
 <tr><td> $c_{3,1}$  <td><td> 16.312      <td><tr>
 <tr><td> $c_{3,2}$  <td><td> 16.917  <td><tr>
-<tr><td> $c_{3,3}$  <td><td> 13.218  <td><tr>
-<tr><td> $c_{3,4}$  <td><td> 14.347        <td><tr><table>
+<tr><td> $c_{3,3}$  <td><td> 13.218  <td><tr><table>
 
 </div>
 </div>
@@ -15147,7 +15164,7 @@ x2 = 20.0
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<p>Finalmente se desea determinar las cantidades a enviar desde cada almacen a cada destino.</p>
+<p>Finalmente, se desea determinar las cantidades optimas a enviar desde cada almacen a cada destino,pero minimizando el costo total de envio.</p>
 
 </div>
 </div>
@@ -15157,50 +15174,10 @@ x2 = 20.0
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[19]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">gurobipy</span> <span class="kn">import</span> <span class="o">*</span>
-
-<span class="n">m</span><span class="o">=</span><span class="n">Model</span><span class="p">()</span>
-<span class="n">x_11</span><span class="o">=</span><span class="n">m</span><span class="o">.</span><span class="n">addVar</span><span class="p">(</span><span class="n">vtype</span><span class="o">=</span><span class="n">GRB</span><span class="o">.</span><span class="n">CONTINUOUS</span><span class="p">,</span><span class="n">name</span><span class="o">=</span><span class="s2">"x_11"</span><span class="p">)</span>
-<span class="n">x_12</span><span class="o">=</span><span class="n">m</span><span class="o">.</span><span class="n">addVar</span><span class="p">(</span><span class="n">vtype</span><span class="o">=</span><span class="n">GRB</span><span class="o">.</span><span class="n">CONTINUOUS</span><span class="p">,</span><span class="n">name</span><span class="o">=</span><span class="s2">"x_12"</span><span class="p">)</span>
-<span class="n">x_13</span><span class="o">=</span><span class="n">m</span><span class="o">.</span><span class="n">addVar</span><span class="p">(</span><span class="n">vtype</span><span class="o">=</span><span class="n">GRB</span><span class="o">.</span><span class="n">CONTINUOUS</span><span class="p">,</span><span class="n">name</span><span class="o">=</span><span class="s2">"x_13"</span><span class="p">)</span>
-<span class="n">x_14</span><span class="o">=</span><span class="n">m</span><span class="o">.</span><span class="n">addVar</span><span class="p">(</span><span class="n">vtype</span><span class="o">=</span><span class="n">GRB</span><span class="o">.</span><span class="n">CONTINUOUS</span><span class="p">,</span><span class="n">name</span><span class="o">=</span><span class="s2">"x_14"</span><span class="p">)</span>
-<span class="n">x_21</span><span class="o">=</span><span class="n">m</span><span class="o">.</span><span class="n">addVar</span><span class="p">(</span><span class="n">vtype</span><span class="o">=</span><span class="n">GRB</span><span class="o">.</span><span class="n">CONTINUOUS</span><span class="p">,</span><span class="n">name</span><span class="o">=</span><span class="s2">"x_21"</span><span class="p">)</span>
-<span class="n">x_22</span><span class="o">=</span><span class="n">m</span><span class="o">.</span><span class="n">addVar</span><span class="p">(</span><span class="n">vtype</span><span class="o">=</span><span class="n">GRB</span><span class="o">.</span><span class="n">CONTINUOUS</span><span class="p">,</span><span class="n">name</span><span class="o">=</span><span class="s2">"x_22"</span><span class="p">)</span>
-<span class="n">x_23</span><span class="o">=</span><span class="n">m</span><span class="o">.</span><span class="n">addVar</span><span class="p">(</span><span class="n">vtype</span><span class="o">=</span><span class="n">GRB</span><span class="o">.</span><span class="n">CONTINUOUS</span><span class="p">,</span><span class="n">name</span><span class="o">=</span><span class="s2">"x_23"</span><span class="p">)</span>
-<span class="n">x_24</span><span class="o">=</span><span class="n">m</span><span class="o">.</span><span class="n">addVar</span><span class="p">(</span><span class="n">vtype</span><span class="o">=</span><span class="n">GRB</span><span class="o">.</span><span class="n">CONTINUOUS</span><span class="p">,</span><span class="n">name</span><span class="o">=</span><span class="s2">"x_24"</span><span class="p">)</span>
-<span class="n">x_31</span><span class="o">=</span><span class="n">m</span><span class="o">.</span><span class="n">addVar</span><span class="p">(</span><span class="n">vtype</span><span class="o">=</span><span class="n">GRB</span><span class="o">.</span><span class="n">CONTINUOUS</span><span class="p">,</span><span class="n">name</span><span class="o">=</span><span class="s2">"x_31"</span><span class="p">)</span>
-<span class="n">x_32</span><span class="o">=</span><span class="n">m</span><span class="o">.</span><span class="n">addVar</span><span class="p">(</span><span class="n">vtype</span><span class="o">=</span><span class="n">GRB</span><span class="o">.</span><span class="n">CONTINUOUS</span><span class="p">,</span><span class="n">name</span><span class="o">=</span><span class="s2">"x_32"</span><span class="p">)</span>
-<span class="n">x_33</span><span class="o">=</span><span class="n">m</span><span class="o">.</span><span class="n">addVar</span><span class="p">(</span><span class="n">vtype</span><span class="o">=</span><span class="n">GRB</span><span class="o">.</span><span class="n">CONTINUOUS</span><span class="p">,</span><span class="n">name</span><span class="o">=</span><span class="s2">"x_33"</span><span class="p">)</span>
-<span class="n">x_34</span><span class="o">=</span><span class="n">m</span><span class="o">.</span><span class="n">addVar</span><span class="p">(</span><span class="n">vtype</span><span class="o">=</span><span class="n">GRB</span><span class="o">.</span><span class="n">CONTINUOUS</span><span class="p">,</span><span class="n">name</span><span class="o">=</span><span class="s2">"x_34"</span><span class="p">)</span>
-
-<span class="n">c_11</span><span class="o">=</span><span class="mi">10200</span>
-<span class="n">c_12</span><span class="o">=</span><span class="mi">13450</span>
-<span class="n">c_13</span><span class="o">=</span><span class="mi">11890</span>
-<span class="n">c_14</span><span class="o">=</span><span class="mi">19324</span>
-<span class="n">c_21</span><span class="o">=</span><span class="mi">15912</span>
-<span class="n">c_22</span><span class="o">=</span><span class="mi">15340</span>
-<span class="n">c_23</span><span class="o">=</span><span class="mi">12670</span>
-<span class="n">c_24</span><span class="o">=</span><span class="mi">11843</span>
-<span class="n">c_31</span><span class="o">=</span><span class="mi">16312</span>
-<span class="n">c_32</span><span class="o">=</span><span class="mi">16917</span>
-<span class="n">c_33</span><span class="o">=</span><span class="mi">13218</span>
-<span class="n">c_34</span><span class="o">=</span><span class="mi">14347</span>
-<span class="mi">6079</span>
-<span class="n">c1</span><span class="o">=</span><span class="n">m</span><span class="o">.</span><span class="n">addConstr</span><span class="p">(</span><span class="n">x_11</span><span class="o">+</span><span class="n">x_12</span><span class="o">+</span><span class="n">x_13</span><span class="o">+</span><span class="n">x_14</span><span class="o">&lt;=</span><span class="mi">2045</span><span class="p">)</span>
-<span class="n">c2</span><span class="o">=</span><span class="n">m</span><span class="o">.</span><span class="n">addConstr</span><span class="p">(</span><span class="n">x_21</span><span class="o">+</span><span class="n">x_22</span><span class="o">+</span><span class="n">x_23</span><span class="o">+</span><span class="n">x_24</span><span class="o">&lt;=</span><span class="mi">2234</span><span class="p">)</span>
-<span class="n">c3</span><span class="o">=</span><span class="n">m</span><span class="o">.</span><span class="n">addConstr</span><span class="p">(</span><span class="n">x_31</span><span class="o">+</span><span class="n">x_32</span><span class="o">+</span><span class="n">x_33</span><span class="o">+</span><span class="n">x_34</span><span class="o">&lt;=</span><span class="mi">1800</span><span class="p">)</span>
-
-<span class="n">c1</span><span class="o">=</span><span class="n">m</span><span class="o">.</span><span class="n">addConstr</span><span class="p">(</span><span class="n">x_11</span><span class="o">+</span><span class="n">x_21</span><span class="o">+</span><span class="n">x_31</span><span class="o">&gt;=</span><span class="mi">1523</span><span class="p">)</span>
-<span class="n">c2</span><span class="o">=</span><span class="n">m</span><span class="o">.</span><span class="n">addConstr</span><span class="p">(</span><span class="n">x_12</span><span class="o">+</span><span class="n">x_22</span><span class="o">+</span><span class="n">x_32</span><span class="o">&gt;=</span><span class="mi">1768</span><span class="p">)</span>
-<span class="n">c3</span><span class="o">=</span><span class="n">m</span><span class="o">.</span><span class="n">addConstr</span><span class="p">(</span><span class="n">x_13</span><span class="o">+</span><span class="n">x_23</span><span class="o">+</span><span class="n">x_33</span><span class="o">&gt;=</span><span class="mi">850</span><span class="p">)</span>
-<span class="n">c3</span><span class="o">=</span><span class="n">m</span><span class="o">.</span><span class="n">addConstr</span><span class="p">(</span><span class="n">x_14</span><span class="o">+</span><span class="n">x_24</span><span class="o">+</span><span class="n">x_34</span><span class="o">&gt;=</span><span class="mi">1918</span><span class="p">)</span>
-
-
-<span class="n">m</span><span class="o">.</span><span class="n">setObjective</span><span class="p">(</span><span class="n">c_11</span><span class="o">*</span><span class="n">x_11</span><span class="o">+</span><span class="n">c_12</span><span class="o">*</span><span class="n">x_12</span><span class="o">+</span><span class="n">c_13</span><span class="o">*</span><span class="n">x_13</span><span class="o">+</span><span class="n">c_14</span><span class="o">*</span><span class="n">x_14</span><span class="o">+</span><span class="n">c_21</span><span class="o">*</span><span class="n">x_21</span><span class="o">+</span><span class="n">c_22</span><span class="o">*</span><span class="n">x_22</span><span class="o">+</span><span class="n">c_23</span><span class="o">*</span><span class="n">x_23</span><span class="o">+</span><span class="n">c_24</span><span class="o">*</span><span class="n">x_24</span>
-               <span class="o">+</span><span class="n">c_31</span><span class="o">*</span><span class="n">x_31</span><span class="o">+</span><span class="n">c_32</span><span class="o">*</span><span class="n">x_32</span><span class="o">+</span><span class="n">c_33</span><span class="o">*</span><span class="n">x_33</span><span class="o">+</span><span class="n">c_34</span><span class="o">*</span><span class="n">x_34</span><span class="p">,</span><span class="n">GRB</span><span class="o">.</span><span class="n">MAXIMIZE</span><span class="p">)</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="n">Si</span> <span class="n">formalizamos</span> <span class="n">el</span> <span class="n">modelo</span> <span class="n">de</span> <span class="n">optimización</span><span class="p">,</span><span class="n">tenemos</span> <span class="n">lo</span> <span class="n">siguiente</span><span class="p">:</span>
 </pre></div>
 
      </div>
@@ -15216,7 +15193,54 @@ x2 = 20.0
 <div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[20]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">m</span><span class="o">.</span><span class="n">optimize</span><span class="p">()</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">pyomo.environ</span> <span class="kn">import</span> <span class="o">*</span>
+
+<span class="n">modelo</span><span class="o">=</span><span class="n">ConcreteModel</span><span class="p">()</span>
+
+<span class="n">modelo</span><span class="o">.</span><span class="n">x1_1</span><span class="o">=</span><span class="n">Var</span><span class="p">(</span><span class="n">within</span><span class="o">=</span><span class="n">NonNegativeIntegers</span><span class="p">,</span><span class="n">bounds</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="kc">None</span><span class="p">))</span>
+<span class="n">modelo</span><span class="o">.</span><span class="n">x1_2</span><span class="o">=</span><span class="n">Var</span><span class="p">(</span><span class="n">within</span><span class="o">=</span><span class="n">NonNegativeIntegers</span><span class="p">,</span><span class="n">bounds</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="kc">None</span><span class="p">))</span>
+<span class="n">modelo</span><span class="o">.</span><span class="n">x1_3</span><span class="o">=</span><span class="n">Var</span><span class="p">(</span><span class="n">within</span><span class="o">=</span><span class="n">NonNegativeIntegers</span><span class="p">,</span><span class="n">bounds</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="kc">None</span><span class="p">))</span>
+<span class="n">modelo</span><span class="o">.</span><span class="n">x2_1</span><span class="o">=</span><span class="n">Var</span><span class="p">(</span><span class="n">within</span><span class="o">=</span><span class="n">NonNegativeIntegers</span><span class="p">,</span><span class="n">bounds</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="kc">None</span><span class="p">))</span>
+<span class="n">modelo</span><span class="o">.</span><span class="n">x2_2</span><span class="o">=</span><span class="n">Var</span><span class="p">(</span><span class="n">within</span><span class="o">=</span><span class="n">NonNegativeIntegers</span><span class="p">,</span><span class="n">bounds</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="kc">None</span><span class="p">))</span>
+<span class="n">modelo</span><span class="o">.</span><span class="n">x2_3</span><span class="o">=</span><span class="n">Var</span><span class="p">(</span><span class="n">within</span><span class="o">=</span><span class="n">NonNegativeIntegers</span><span class="p">,</span><span class="n">bounds</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="kc">None</span><span class="p">))</span>
+<span class="n">modelo</span><span class="o">.</span><span class="n">x3_1</span><span class="o">=</span><span class="n">Var</span><span class="p">(</span><span class="n">within</span><span class="o">=</span><span class="n">NonNegativeIntegers</span><span class="p">,</span><span class="n">bounds</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="kc">None</span><span class="p">))</span>
+<span class="n">modelo</span><span class="o">.</span><span class="n">x3_2</span><span class="o">=</span><span class="n">Var</span><span class="p">(</span><span class="n">within</span><span class="o">=</span><span class="n">NonNegativeIntegers</span><span class="p">,</span><span class="n">bounds</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="kc">None</span><span class="p">))</span>
+<span class="n">modelo</span><span class="o">.</span><span class="n">x3_3</span><span class="o">=</span><span class="n">Var</span><span class="p">(</span><span class="n">within</span><span class="o">=</span><span class="n">NonNegativeIntegers</span><span class="p">,</span><span class="n">bounds</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="kc">None</span><span class="p">))</span>
+
+<span class="n">c1_1</span><span class="o">=</span><span class="mi">10200</span>
+<span class="n">c1_2</span><span class="o">=</span><span class="mi">13450</span>
+<span class="n">c1_3</span><span class="o">=</span><span class="mi">11890</span>
+<span class="n">c2_1</span><span class="o">=</span><span class="mi">15912</span>
+<span class="n">c2_2</span><span class="o">=</span><span class="mi">15340</span>
+<span class="n">c2_3</span><span class="o">=</span><span class="mi">12670</span>
+<span class="n">c3_1</span><span class="o">=</span><span class="mi">16312</span>
+<span class="n">c3_2</span><span class="o">=</span><span class="mi">16917</span>
+<span class="n">c3_3</span><span class="o">=</span><span class="mi">13218</span>
+
+<span class="n">modelo</span><span class="o">.</span><span class="n">objetivo</span> <span class="o">=</span> <span class="n">Objective</span><span class="p">(</span><span class="n">expr</span><span class="o">=</span><span class="n">c1_1</span><span class="o">*</span><span class="n">modelo</span><span class="o">.</span><span class="n">x1_1</span><span class="o">+</span><span class="n">c1_2</span><span class="o">*</span><span class="n">modelo</span><span class="o">.</span><span class="n">x1_2</span><span class="o">+</span><span class="n">c1_3</span><span class="o">*</span><span class="n">modelo</span><span class="o">.</span><span class="n">x1_3</span><span class="o">+</span>
+                                 <span class="n">c2_1</span><span class="o">*</span><span class="n">modelo</span><span class="o">.</span><span class="n">x2_1</span><span class="o">+</span><span class="n">c2_2</span><span class="o">*</span><span class="n">modelo</span><span class="o">.</span><span class="n">x2_2</span><span class="o">+</span><span class="n">c2_3</span><span class="o">*</span><span class="n">modelo</span><span class="o">.</span><span class="n">x2_3</span><span class="o">+</span>
+                                 <span class="n">c3_1</span><span class="o">*</span><span class="n">modelo</span><span class="o">.</span><span class="n">x3_1</span><span class="o">+</span><span class="n">c3_2</span><span class="o">*</span><span class="n">modelo</span><span class="o">.</span><span class="n">x3_2</span><span class="o">+</span><span class="n">c3_3</span><span class="o">*</span><span class="n">modelo</span><span class="o">.</span><span class="n">x3_3</span><span class="p">,</span> <span class="n">sense</span><span class="o">=</span><span class="n">minimize</span><span class="p">)</span>
+
+<span class="n">modelo</span><span class="o">.</span><span class="n">restriccion1</span> <span class="o">=</span> <span class="n">Constraint</span><span class="p">(</span><span class="n">expr</span><span class="o">=</span><span class="n">modelo</span><span class="o">.</span><span class="n">x1_1</span> <span class="o">+</span> <span class="n">modelo</span><span class="o">.</span><span class="n">x1_2</span><span class="o">+</span><span class="n">modelo</span><span class="o">.</span><span class="n">x1_3</span> <span class="o">&lt;=</span> <span class="mi">2045</span><span class="p">)</span>
+<span class="n">modelo</span><span class="o">.</span><span class="n">restriccion2</span> <span class="o">=</span> <span class="n">Constraint</span><span class="p">(</span><span class="n">expr</span><span class="o">=</span><span class="n">modelo</span><span class="o">.</span><span class="n">x2_1</span> <span class="o">+</span> <span class="n">modelo</span><span class="o">.</span><span class="n">x2_2</span><span class="o">+</span><span class="n">modelo</span><span class="o">.</span><span class="n">x2_3</span> <span class="o">&lt;=</span> <span class="mi">2234</span><span class="p">)</span>
+<span class="n">modelo</span><span class="o">.</span><span class="n">restriccion3</span> <span class="o">=</span> <span class="n">Constraint</span><span class="p">(</span><span class="n">expr</span><span class="o">=</span><span class="n">modelo</span><span class="o">.</span><span class="n">x3_1</span> <span class="o">+</span> <span class="n">modelo</span><span class="o">.</span><span class="n">x3_2</span><span class="o">+</span><span class="n">modelo</span><span class="o">.</span><span class="n">x3_3</span> <span class="o">&lt;=</span> <span class="mi">1800</span><span class="p">)</span>
+
+<span class="n">modelo</span><span class="o">.</span><span class="n">restriccion4</span> <span class="o">=</span> <span class="n">Constraint</span><span class="p">(</span><span class="n">expr</span><span class="o">=</span><span class="n">modelo</span><span class="o">.</span><span class="n">x1_1</span> <span class="o">+</span> <span class="n">modelo</span><span class="o">.</span><span class="n">x2_1</span><span class="o">+</span><span class="n">modelo</span><span class="o">.</span><span class="n">x3_1</span> <span class="o">&gt;=</span> <span class="mi">1523</span><span class="p">)</span>
+<span class="n">modelo</span><span class="o">.</span><span class="n">restriccion5</span> <span class="o">=</span> <span class="n">Constraint</span><span class="p">(</span><span class="n">expr</span><span class="o">=</span><span class="n">modelo</span><span class="o">.</span><span class="n">x1_2</span> <span class="o">+</span> <span class="n">modelo</span><span class="o">.</span><span class="n">x2_2</span><span class="o">+</span><span class="n">modelo</span><span class="o">.</span><span class="n">x3_2</span> <span class="o">&gt;=</span> <span class="mi">1768</span><span class="p">)</span>
+<span class="n">modelo</span><span class="o">.</span><span class="n">restriccion6</span> <span class="o">=</span> <span class="n">Constraint</span><span class="p">(</span><span class="n">expr</span><span class="o">=</span><span class="n">modelo</span><span class="o">.</span><span class="n">x1_3</span> <span class="o">+</span> <span class="n">modelo</span><span class="o">.</span><span class="n">x2_3</span><span class="o">+</span><span class="n">modelo</span><span class="o">.</span><span class="n">x3_3</span> <span class="o">&gt;=</span> <span class="mi">850</span><span class="p">)</span>
+
+<span class="n">glpsol_path</span> <span class="o">=</span> <span class="s1">'C:\winglpk-4.65\glpk-4.65\w64\glpsol.exe'</span>
+<span class="n">solver</span> <span class="o">=</span> <span class="n">SolverFactory</span><span class="p">(</span><span class="s1">'glpk'</span><span class="p">,</span> <span class="n">executable</span><span class="o">=</span><span class="n">glpsol_path</span><span class="p">)</span>  
+
+<span class="n">resultado</span> <span class="o">=</span> <span class="n">solver</span><span class="o">.</span><span class="n">solve</span><span class="p">(</span><span class="n">modelo</span><span class="p">)</span>
+
+<span class="c1"># Mostrar valor de funcion objetivo y variables</span>
+<span class="c1">#modelo.pprint()</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"</span><span class="se">\n</span><span class="s2">Resultados:"</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"Valor óptimo de la función objetivo:"</span><span class="p">,</span> <span class="s2">"$</span><span class="si">{:,.2f}</span><span class="s2">"</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">value</span><span class="p">(</span><span class="n">modelo</span><span class="o">.</span><span class="n">objetivo</span><span class="p">)))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"x1_1 ="</span><span class="p">,</span> <span class="n">value</span><span class="p">(</span><span class="n">modelo</span><span class="o">.</span><span class="n">x1_1</span><span class="p">),</span><span class="s2">"x1_2 ="</span><span class="p">,</span> <span class="n">value</span><span class="p">(</span><span class="n">modelo</span><span class="o">.</span><span class="n">x1_2</span><span class="p">),</span><span class="s2">"x1_3 ="</span><span class="p">,</span> <span class="n">value</span><span class="p">(</span><span class="n">modelo</span><span class="o">.</span><span class="n">x1_3</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"x2_1 ="</span><span class="p">,</span> <span class="n">value</span><span class="p">(</span><span class="n">modelo</span><span class="o">.</span><span class="n">x2_1</span><span class="p">),</span><span class="s2">"x2_2 ="</span><span class="p">,</span> <span class="n">value</span><span class="p">(</span><span class="n">modelo</span><span class="o">.</span><span class="n">x2_2</span><span class="p">),</span><span class="s2">"x2_3 ="</span><span class="p">,</span> <span class="n">value</span><span class="p">(</span><span class="n">modelo</span><span class="o">.</span><span class="n">x2_3</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"x3_1 ="</span><span class="p">,</span> <span class="n">value</span><span class="p">(</span><span class="n">modelo</span><span class="o">.</span><span class="n">x3_1</span><span class="p">),</span><span class="s2">"x3_2 ="</span><span class="p">,</span> <span class="n">value</span><span class="p">(</span><span class="n">modelo</span><span class="o">.</span><span class="n">x3_2</span><span class="p">),</span><span class="s2">"x3_3 ="</span><span class="p">,</span> <span class="n">value</span><span class="p">(</span><span class="n">modelo</span><span class="o">.</span><span class="n">x3_3</span><span class="p">))</span>
 </pre></div>
 
      </div>
@@ -15236,111 +15260,12 @@ x2 = 20.0
 
 
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain">
-<pre>Gurobi Optimizer version 9.5.2 build v9.5.2rc0 (win64)
-Thread count: 4 physical cores, 8 logical processors, using up to 8 threads
-Optimize a model with 7 rows, 12 columns and 24 nonzeros
-Model fingerprint: 0x025b9e56
-Coefficient statistics:
-  Matrix range     [1e+00, 1e+00]
-  Objective range  [1e+04, 2e+04]
-  Bounds range     [0e+00, 0e+00]
-  RHS range        [9e+02, 2e+03]
-Presolve time: 0.02s
-Presolved: 7 rows, 12 columns, 24 nonzeros
-
-Iteration    Objective       Primal Inf.    Dual Inf.      Time
-       0    1.7142300e+35   1.200000e+31   1.714230e+05      0s
-       6    1.0229672e+08   0.000000e+00   0.000000e+00      0s
-
-Solved in 6 iterations and 0.03 seconds (0.00 work units)
-Optimal objective  1.022967200e+08
-</pre>
-</div>
-</div>
-
-</div>
-
-</div>
-
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[21]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-     <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">m</span><span class="o">.</span><span class="n">getVars</span><span class="p">()</span>
-</pre></div>
-
-     </div>
-</div>
-</div>
-</div>
-
-<div class="jp-Cell-outputWrapper">
-<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
-</div>
-
-
-<div class="jp-OutputArea jp-Cell-outputArea">
-<div class="jp-OutputArea-child jp-OutputArea-executeResult">
-    
-    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[21]:</div>
-
-
-
-
-<div class="jp-RenderedText jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/plain">
-<pre>[&lt;gurobi.Var x_11 (value 0.0)&gt;,
- &lt;gurobi.Var x_12 (value 0.0)&gt;,
- &lt;gurobi.Var x_13 (value 107.0)&gt;,
- &lt;gurobi.Var x_14 (value 1938.0)&gt;,
- &lt;gurobi.Var x_21 (value 1523.0)&gt;,
- &lt;gurobi.Var x_22 (value 0.0)&gt;,
- &lt;gurobi.Var x_23 (value 711.0)&gt;,
- &lt;gurobi.Var x_24 (value 0.0)&gt;,
- &lt;gurobi.Var x_31 (value 0.0)&gt;,
- &lt;gurobi.Var x_32 (value 1768.0)&gt;,
- &lt;gurobi.Var x_33 (value 32.0)&gt;,
- &lt;gurobi.Var x_34 (value 0.0)&gt;]</pre>
-</div>
-
-</div>
-
-</div>
-
-</div>
-
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[25]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-     <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">"$</span><span class="si">{:0,.0f}</span><span class="s2">"</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">m</span><span class="o">.</span><span class="n">objval</span><span class="p">))</span>
-</pre></div>
-
-     </div>
-</div>
-</div>
-</div>
-
-<div class="jp-Cell-outputWrapper">
-<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
-</div>
-
-
-<div class="jp-OutputArea jp-Cell-outputArea">
-<div class="jp-OutputArea-child">
-    
-    <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
-
-
-<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain">
-<pre>$102,296,720
+<pre>
+Resultados:
+Valor óptimo de la función objetivo: $52,438,640.00
+x1_1 = 1523.0 x1_2 = 522.0 x1_3 = 0.0
+x2_1 = 0.0 x2_2 = 1246.0 x2_3 = 850.0
+x3_1 = 0.0 x3_2 = 0.0 x3_3 = 0.0
 </pre>
 </div>
 </div>
@@ -15356,7 +15281,8 @@ Optimal objective  1.022967200e+08
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<p>Como podemos ver en los resultados del problema de transporte,el modelo es capaz de asignar la cantidad que debe satisfacer la demanda de cada destino,pero teniendo en cuenta que se debe minimizar el costo total de envío.Asi finalmente podemos ver que el costo total de envío es de <strong>102.296.720</strong> ,el que puede parecer un costo alto,pero en realidad es la mejor combinación de envios que a determinado el modelo.</p>
+<p>Al analizar los resultados obtenidos por pyomo,podemos ver que el modelo es capaz de satisfacer la demanda de cada destino.</p>
+<p>Asi el costo total de envio es de <strong>$52.438.640</strong> ,el que puede parecer un costo alto,sin embargo es la mejor combinación de envios que a determinado el modelo.</p>
 
 </div>
 </div>
