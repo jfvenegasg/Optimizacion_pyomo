@@ -14593,7 +14593,7 @@ body[data-format='mobile'] .jp-OutputArea-child .jp-OutputArea-output {
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h1 id="Introducci%C3%B3n-a-la-optimizaci%C3%B3n-en-Python-con-Gurobi">Introducci&#243;n a la optimizaci&#243;n en Python con Gurobi<a class="anchor-link" href="#Introducci%C3%B3n-a-la-optimizaci%C3%B3n-en-Python-con-Gurobi">&#182;</a></h1>
+<h1 id="Introducci%C3%B3n-a-la-optimizaci%C3%B3n-en-Python-con-Pyomo">Introducci&#243;n a la optimizaci&#243;n en Python con Pyomo<a class="anchor-link" href="#Introducci%C3%B3n-a-la-optimizaci%C3%B3n-en-Python-con-Pyomo">&#182;</a></h1>
 </div>
 </div>
 </div>
@@ -14643,9 +14643,9 @@ body[data-format='mobile'] .jp-OutputArea-child .jp-OutputArea-output {
 <li><a href="#Modelamiento-con-Pyomo">Modelamiento con Pyomo</a><ol>
 <li><a href="#Problema-del-carpintero">Problema del carpintero</a></li>
 <li><a href="#Problema-de-transporte">Problema de transporte</a></li>
+<li><a href="#Problema-de-la-mochila">Problema de la mochila</a></li>
 </ol>
 </li>
-<li><a href="#Modelamiento-con-Gurobi">Modelamiento con Gurobi</a></li>
 </ol>
 
 </div>
@@ -15294,7 +15294,9 @@ x3_1 = 0.0 x3_2 = 0.0 x3_3 = 0.0
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<h2 id="Problema-de-la-mochila-(knapsack-problem)-%F0%9F%8E%92">Problema de la mochila (knapsack problem) &#127890;<a class="anchor-link" href="#Problema-de-la-mochila-(knapsack-problem)-%F0%9F%8E%92">&#182;</a></h2><p>El problema de la mochila es un caso particular,pero que a su vez comprende una familia de subproblemas.En este contexto estamos hablando de problemas de optimización combinatoria,sin embargo en esta sección solo consideraremos una versión basica del problema de la mochila,ya que este tipo de problemas se consideran como algoritmos NP-hard,lo cual implica que el tiempo de resolución crece de forma exponencial.En versiones posteriores de este curso consideraremos otras formulaciones de este tipo de problemas.</p>
+<p><a id='Problema-de-la-mochila'></a></p>
+<h3 id="Problema-de-la-mochila-(knapsack-problem)">Problema de la mochila (knapsack problem)<a class="anchor-link" href="#Problema-de-la-mochila-(knapsack-problem)">&#182;</a></h3><p><a href="#Indice">Inicio ▲</a></p>
+<p>El problema de la mochila es un caso particular,pero que a su vez comprende una familia de subproblemas.En este contexto estamos hablando de problemas de optimización combinatoria,sin embargo en esta sección solo consideraremos una versión basica del problema de la mochila,ya que este tipo de problemas se consideran como algoritmos NP-hard,lo cual implica que el tiempo de resolución crece de forma exponencial.En versiones posteriores de este curso consideraremos otras formulaciones de este tipo de problemas.</p>
 <p>Consideremos el caso de una persona que desea ir de excursión y para tal caso,debe llevar una mochila con ciertos objetos,sin embargo hay 5 objetos que desea llevar los cuales exceden el peso que admite la mochila de 60 kg.Consideremos la siguiente tabla con los articulos,su peso y utilidad relativa.</p>
 <table ><tr><th> Articulo $x_{j}$<th><th> 1 <th><th> 2 <th><th> 3 <th><th> 4 <th><th> 5 <tr><tr>
 <tr><td> Peso $w_{j}$ <td><td> 42     <td><td> 23     <td><td> 21     <td><td> 15     <td><td> 7     <td><tr>
@@ -15320,55 +15322,50 @@ x3_1 = 0.0 x3_2 = 0.0 x3_3 = 0.0
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[67]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-     <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">gurobipy</span> <span class="kn">import</span> <span class="o">*</span>
-
-<span class="n">m</span><span class="o">=</span><span class="n">Model</span><span class="p">()</span>
-<span class="n">x_1</span><span class="o">=</span><span class="n">m</span><span class="o">.</span><span class="n">addVar</span><span class="p">(</span><span class="n">vtype</span><span class="o">=</span><span class="n">GRB</span><span class="o">.</span><span class="n">BINARY</span><span class="p">,</span><span class="n">name</span><span class="o">=</span><span class="s2">"x_1"</span><span class="p">)</span>
-<span class="n">x_2</span><span class="o">=</span><span class="n">m</span><span class="o">.</span><span class="n">addVar</span><span class="p">(</span><span class="n">vtype</span><span class="o">=</span><span class="n">GRB</span><span class="o">.</span><span class="n">BINARY</span><span class="p">,</span><span class="n">name</span><span class="o">=</span><span class="s2">"x_2"</span><span class="p">)</span>
-<span class="n">x_3</span><span class="o">=</span><span class="n">m</span><span class="o">.</span><span class="n">addVar</span><span class="p">(</span><span class="n">vtype</span><span class="o">=</span><span class="n">GRB</span><span class="o">.</span><span class="n">BINARY</span><span class="p">,</span><span class="n">name</span><span class="o">=</span><span class="s2">"x_3"</span><span class="p">)</span>
-<span class="n">x_4</span><span class="o">=</span><span class="n">m</span><span class="o">.</span><span class="n">addVar</span><span class="p">(</span><span class="n">vtype</span><span class="o">=</span><span class="n">GRB</span><span class="o">.</span><span class="n">BINARY</span><span class="p">,</span><span class="n">name</span><span class="o">=</span><span class="s2">"x_4"</span><span class="p">)</span>
-<span class="n">x_5</span><span class="o">=</span><span class="n">m</span><span class="o">.</span><span class="n">addVar</span><span class="p">(</span><span class="n">vtype</span><span class="o">=</span><span class="n">GRB</span><span class="o">.</span><span class="n">BINARY</span><span class="p">,</span><span class="n">name</span><span class="o">=</span><span class="s2">"x_5"</span><span class="p">)</span>
-
-<span class="n">p_1</span><span class="o">=</span><span class="mi">100</span>
-<span class="n">p_2</span><span class="o">=</span><span class="mi">60</span>
-<span class="n">p_3</span><span class="o">=</span><span class="mi">70</span>
-<span class="n">p_4</span><span class="o">=</span><span class="mi">15</span>
-<span class="n">p_5</span><span class="o">=</span><span class="mi">15</span>
-
-<span class="n">w_1</span><span class="o">=</span><span class="mi">42</span>
-<span class="n">w_2</span><span class="o">=</span><span class="mi">23</span>
-<span class="n">w_3</span><span class="o">=</span><span class="mi">21</span>
-<span class="n">w_4</span><span class="o">=</span><span class="mi">15</span>
-<span class="n">w_5</span><span class="o">=</span><span class="mi">7</span>
-
-<span class="n">c1</span><span class="o">=</span><span class="n">m</span><span class="o">.</span><span class="n">addConstr</span><span class="p">(</span><span class="n">w_1</span><span class="o">*</span><span class="n">x_1</span><span class="o">+</span><span class="n">w_2</span><span class="o">*</span><span class="n">x_2</span><span class="o">+</span><span class="n">w_3</span><span class="o">*</span><span class="n">x_3</span><span class="o">+</span><span class="n">w_4</span><span class="o">*</span><span class="n">x_4</span><span class="o">+</span><span class="n">w_5</span><span class="o">*</span><span class="n">x_5</span><span class="o">&lt;=</span><span class="mi">60</span><span class="p">)</span>
-
-
-<span class="n">m</span><span class="o">.</span><span class="n">setObjective</span><span class="p">(</span><span class="n">p_1</span><span class="o">*</span><span class="n">x_1</span><span class="o">+</span><span class="n">p_2</span><span class="o">*</span><span class="n">x_2</span><span class="o">+</span><span class="n">p_3</span><span class="o">*</span><span class="n">x_3</span><span class="o">+</span><span class="n">p_4</span><span class="o">*</span><span class="n">x_4</span><span class="o">+</span><span class="n">p_5</span><span class="o">*</span><span class="n">x_5</span><span class="p">,</span><span class="n">GRB</span><span class="o">.</span><span class="n">MAXIMIZE</span><span class="p">)</span>
-</pre></div>
-
-     </div>
-</div>
-</div>
-</div>
-
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
 <div class="jp-Cell-inputWrapper">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[68]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[3]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">m</span><span class="o">.</span><span class="n">optimize</span><span class="p">()</span>
+<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">pyomo.environ</span> <span class="kn">import</span> <span class="o">*</span>
+
+<span class="n">modelo</span><span class="o">=</span><span class="n">ConcreteModel</span><span class="p">()</span>
+
+<span class="n">modelo</span><span class="o">.</span><span class="n">x1</span><span class="o">=</span><span class="n">Var</span><span class="p">(</span><span class="n">within</span><span class="o">=</span><span class="n">Binary</span><span class="p">,</span><span class="n">bounds</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">))</span>
+<span class="n">modelo</span><span class="o">.</span><span class="n">x2</span><span class="o">=</span><span class="n">Var</span><span class="p">(</span><span class="n">within</span><span class="o">=</span><span class="n">Binary</span><span class="p">,</span><span class="n">bounds</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">))</span>
+<span class="n">modelo</span><span class="o">.</span><span class="n">x3</span><span class="o">=</span><span class="n">Var</span><span class="p">(</span><span class="n">within</span><span class="o">=</span><span class="n">Binary</span><span class="p">,</span><span class="n">bounds</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">))</span>
+<span class="n">modelo</span><span class="o">.</span><span class="n">x4</span><span class="o">=</span><span class="n">Var</span><span class="p">(</span><span class="n">within</span><span class="o">=</span><span class="n">Binary</span><span class="p">,</span><span class="n">bounds</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">))</span>
+<span class="n">modelo</span><span class="o">.</span><span class="n">x5</span><span class="o">=</span><span class="n">Var</span><span class="p">(</span><span class="n">within</span><span class="o">=</span><span class="n">Binary</span><span class="p">,</span><span class="n">bounds</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">))</span>
+
+<span class="n">p1</span><span class="o">=</span><span class="mi">100</span>
+<span class="n">p2</span><span class="o">=</span><span class="mi">60</span>
+<span class="n">p3</span><span class="o">=</span><span class="mi">70</span>
+<span class="n">p4</span><span class="o">=</span><span class="mi">15</span>
+<span class="n">p5</span><span class="o">=</span><span class="mi">15</span>
+
+<span class="n">w1</span><span class="o">=</span><span class="mi">42</span>
+<span class="n">w2</span><span class="o">=</span><span class="mi">23</span>
+<span class="n">w3</span><span class="o">=</span><span class="mi">21</span>
+<span class="n">w4</span><span class="o">=</span><span class="mi">15</span>
+<span class="n">w5</span><span class="o">=</span><span class="mi">7</span>
+
+<span class="n">modelo</span><span class="o">.</span><span class="n">restriccion1</span> <span class="o">=</span> <span class="n">Constraint</span><span class="p">(</span><span class="n">expr</span><span class="o">=</span><span class="n">w1</span><span class="o">*</span><span class="n">modelo</span><span class="o">.</span><span class="n">x1</span> <span class="o">+</span> <span class="n">w2</span><span class="o">*</span><span class="n">modelo</span><span class="o">.</span><span class="n">x2</span><span class="o">+</span><span class="n">w3</span><span class="o">*</span><span class="n">modelo</span><span class="o">.</span><span class="n">x3</span><span class="o">+</span><span class="n">w4</span><span class="o">*</span><span class="n">modelo</span><span class="o">.</span><span class="n">x4</span><span class="o">+</span><span class="n">w5</span><span class="o">*</span><span class="n">modelo</span><span class="o">.</span><span class="n">x5</span> <span class="o">&lt;=</span> <span class="mi">60</span><span class="p">)</span>
+
+<span class="n">modelo</span><span class="o">.</span><span class="n">objetivo</span> <span class="o">=</span> <span class="n">Objective</span><span class="p">(</span><span class="n">expr</span><span class="o">=</span><span class="n">p1</span><span class="o">*</span><span class="n">modelo</span><span class="o">.</span><span class="n">x1</span><span class="o">+</span><span class="n">p2</span><span class="o">*</span><span class="n">modelo</span><span class="o">.</span><span class="n">x2</span><span class="o">+</span><span class="n">p3</span><span class="o">*</span><span class="n">modelo</span><span class="o">.</span><span class="n">x3</span><span class="o">+</span><span class="n">p4</span><span class="o">*</span><span class="n">modelo</span><span class="o">.</span><span class="n">x4</span><span class="o">+</span><span class="n">p5</span><span class="o">*</span><span class="n">modelo</span><span class="o">.</span><span class="n">x5</span><span class="p">,</span> <span class="n">sense</span><span class="o">=</span><span class="n">maximize</span><span class="p">)</span>
+
+<span class="n">glpsol_path</span> <span class="o">=</span> <span class="s1">'C:\winglpk-4.65\glpk-4.65\w64\glpsol.exe'</span>
+<span class="n">solver</span> <span class="o">=</span> <span class="n">SolverFactory</span><span class="p">(</span><span class="s1">'glpk'</span><span class="p">,</span> <span class="n">executable</span><span class="o">=</span><span class="n">glpsol_path</span><span class="p">)</span>  
+
+<span class="n">resultado</span> <span class="o">=</span> <span class="n">solver</span><span class="o">.</span><span class="n">solve</span><span class="p">(</span><span class="n">modelo</span><span class="p">)</span>
+
+<span class="c1"># Mostrar valor de funcion objetivo y variables</span>
+<span class="c1">#modelo.pprint()</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"</span><span class="se">\n</span><span class="s2">Resultados:"</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"Valor óptimo de la función objetivo:"</span><span class="p">,</span> <span class="s2">"$</span><span class="si">{:,.2f}</span><span class="s2">"</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">value</span><span class="p">(</span><span class="n">modelo</span><span class="o">.</span><span class="n">objetivo</span><span class="p">)))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"x1 ="</span><span class="p">,</span> <span class="n">value</span><span class="p">(</span><span class="n">modelo</span><span class="o">.</span><span class="n">x1</span><span class="p">),</span><span class="s2">"x2 ="</span><span class="p">,</span> <span class="n">value</span><span class="p">(</span><span class="n">modelo</span><span class="o">.</span><span class="n">x2</span><span class="p">),</span><span class="s2">"x3 ="</span><span class="p">,</span> <span class="n">value</span><span class="p">(</span><span class="n">modelo</span><span class="o">.</span><span class="n">x3</span><span class="p">),</span><span class="s2">"x4 ="</span><span class="p">,</span> <span class="n">value</span><span class="p">(</span><span class="n">modelo</span><span class="o">.</span><span class="n">x4</span><span class="p">),</span><span class="s2">"x5 ="</span><span class="p">,</span> <span class="n">value</span><span class="p">(</span><span class="n">modelo</span><span class="o">.</span><span class="n">x5</span><span class="p">))</span>
 </pre></div>
 
      </div>
@@ -15388,28 +15385,10 @@ x3_1 = 0.0 x3_2 = 0.0 x3_3 = 0.0
 
 
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain">
-<pre>Gurobi Optimizer version 9.5.2 build v9.5.2rc0 (win64)
-Thread count: 4 physical cores, 8 logical processors, using up to 8 threads
-Optimize a model with 1 rows, 5 columns and 5 nonzeros
-Model fingerprint: 0xe572d482
-Variable types: 0 continuous, 5 integer (5 binary)
-Coefficient statistics:
-  Matrix range     [7e+00, 4e+01]
-  Objective range  [2e+01, 1e+02]
-  Bounds range     [1e+00, 1e+00]
-  RHS range        [6e+01, 6e+01]
-Found heuristic solution: objective 115.0000000
-Presolve removed 1 rows and 5 columns
-Presolve time: 0.00s
-Presolve: All rows and columns removed
-
-Explored 0 nodes (0 simplex iterations) in 0.02 seconds (0.00 work units)
-Thread count was 1 (of 8 available processors)
-
-Solution count 2: 145 115 
-
-Optimal solution found (tolerance 1.00e-04)
-Best objective 1.450000000000e+02, best bound 1.450000000000e+02, gap 0.0000%
+<pre>
+Resultados:
+Valor óptimo de la función objetivo: $145.00
+x1 = 0.0 x2 = 1.0 x3 = 1.0 x4 = 1.0 x5 = 0.0
 </pre>
 </div>
 </div>
@@ -15418,88 +15397,6 @@ Best objective 1.450000000000e+02, best bound 1.450000000000e+02, gap 0.0000%
 
 </div>
 
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[54]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-     <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">m</span><span class="o">.</span><span class="n">getVars</span><span class="p">()</span>
-</pre></div>
-
-     </div>
-</div>
-</div>
-</div>
-
-<div class="jp-Cell-outputWrapper">
-<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
-</div>
-
-
-<div class="jp-OutputArea jp-Cell-outputArea">
-<div class="jp-OutputArea-child jp-OutputArea-executeResult">
-    
-    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[54]:</div>
-
-
-
-
-<div class="jp-RenderedText jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/plain">
-<pre>[&lt;gurobi.Var x_1 (value 0.0)&gt;,
- &lt;gurobi.Var x_2 (value 1.0)&gt;,
- &lt;gurobi.Var x_3 (value 1.0)&gt;,
- &lt;gurobi.Var x_4 (value 0.0)&gt;,
- &lt;gurobi.Var x_5 (value 1.0)&gt;]</pre>
-</div>
-
-</div>
-
-</div>
-
-</div>
-
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
-</div>
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[5]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-     <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">m</span><span class="o">.</span><span class="n">objval</span>
-</pre></div>
-
-     </div>
-</div>
-</div>
-</div>
-
-<div class="jp-Cell-outputWrapper">
-<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
-</div>
-
-
-<div class="jp-OutputArea jp-Cell-outputArea">
-<div class="jp-OutputArea-child jp-OutputArea-executeResult">
-    
-    <div class="jp-OutputPrompt jp-OutputArea-prompt">Out[5]:</div>
-
-
-
-
-<div class="jp-RenderedText jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/plain">
-<pre>145.0</pre>
-</div>
-
-</div>
-
-</div>
-
-</div>
-
 </div>
 <div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
 <div class="jp-Cell-inputWrapper">
@@ -15507,8 +15404,8 @@ Best objective 1.450000000000e+02, best bound 1.450000000000e+02, gap 0.0000%
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<p>De acuerdo a los resultados obtenidos por el optimizador,se obtuvieron 2 soluciones factibles 1 de ellas es mediante una heuristica con un valor total de 115,sin embargo el valor relativo de la mochila se maximiza cuando se elige el 2,3 y 5 por un total de 145.</p>
-<p>Asi el peso completo de la mochila es de 1<em>60+1</em>70+1*15=145</p>
+<p>De acuerdo a los resultados obtenidos por el optimizador,podemos ver que los objetos que deberiamos llevar en la mochila son los objetos 2,3 y 4.</p>
+<p>De esta forma podemos ver que el peso completo de la mochila es de $p_{1}*x_{1}+p_{2}*x_{2}+p_{3}*x_{3}+p_{4}*x_{4}+p_{5}*x_{5}=$ 0x100+1x60+1x70+1x15+0x15=145</p>
 
 </div>
 </div>
@@ -15520,9 +15417,8 @@ Best objective 1.450000000000e+02, best bound 1.450000000000e+02, gap 0.0000%
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<p>Y hemos llegado al final de este curso introductorio a la optimización con la libreria gurobi.En este curso nos centramos en la importancia del modelamiento matemático y como llevar un modelo matemático a la resolución numérica mediante la librería gurobi,
-como se menciona en el curso,hay varios tópicos relacionados al modelamiento matemático y la optimización que no se tocan en este curso,los cuales veremos en próximas ediciones.</p>
-<p>Ante cualquier duda o comentario me puedes escribir a juan.venegas@uach.cl o j.venegasgutierrez@gmail.com</p>
+<p>Y hemos llegado al final de este curso introductorio a la optimización con la libreria Pyomo.Hay varios tópicos relacionados al modelamiento matemático y la optimización que no se tocan en este curso,pero se veran en próximas ediciones.</p>
+<p>Ante cualquier duda o comentario me puedes escribir a j.venegasgutierrez@gmail.com o jvenegasg@docente.uss.cl</p>
 <p>Saludos 🧭</p>
 
 </div>
