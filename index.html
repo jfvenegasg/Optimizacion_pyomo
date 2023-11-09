@@ -15300,9 +15300,9 @@ x3_1 = 0.0 x3_2 = 0.0 x3_3 = 0.0
 <p>Consideremos el caso de una persona que desea ir de excursión y para tal caso,debe llevar una mochila con ciertos objetos,sin embargo hay 5 objetos que desea llevar los cuales exceden el peso que admite la mochila de 60 kg.Consideremos la siguiente tabla con los articulos,su peso y utilidad relativa.</p>
 <table ><tr><th> Articulo $x_{j}$<th><th> 1 <th><th> 2 <th><th> 3 <th><th> 4 <th><th> 5 <tr><tr>
 <tr><td> Peso $w_{j}$ <td><td> 42     <td><td> 23     <td><td> 21     <td><td> 15     <td><td> 7     <td><tr>
-<tr><td> Valor $p_{j}$  <td><td> 100  <td><td> 60 <td><td> 70 <td><td> 15 <td><td> 15    <td><tr><table>
+<tr><td> Valor $v_{j}$  <td><td> 100  <td><td> 60 <td><td> 70 <td><td> 15 <td><td> 15    <td><tr><table>
 <p>Asi podemos formalizar el problema de la mochila de acuerdo a lo siguiente</p>
-<p>$max \sum_{j=1}^n p_{j} x_{j}$</p>
+<p>$max \sum_{j=1}^n v_{j} x_{j}$</p>
 <p>sujeto a</p>
 <p>$\sum_{j=1}^n w_{j}x_{j} \leq c \ \ \ \ i=1,2,...,m$</p>
 <p>$x_{i} \in \{0,1\}$</p>
@@ -15327,7 +15327,7 @@ x3_1 = 0.0 x3_2 = 0.0 x3_3 = 0.0
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[3]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[5]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
      <div class="CodeMirror cm-s-jupyter">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">pyomo.environ</span> <span class="kn">import</span> <span class="o">*</span>
@@ -15340,11 +15340,11 @@ x3_1 = 0.0 x3_2 = 0.0 x3_3 = 0.0
 <span class="n">modelo</span><span class="o">.</span><span class="n">x4</span><span class="o">=</span><span class="n">Var</span><span class="p">(</span><span class="n">within</span><span class="o">=</span><span class="n">Binary</span><span class="p">,</span><span class="n">bounds</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">))</span>
 <span class="n">modelo</span><span class="o">.</span><span class="n">x5</span><span class="o">=</span><span class="n">Var</span><span class="p">(</span><span class="n">within</span><span class="o">=</span><span class="n">Binary</span><span class="p">,</span><span class="n">bounds</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">))</span>
 
-<span class="n">p1</span><span class="o">=</span><span class="mi">100</span>
-<span class="n">p2</span><span class="o">=</span><span class="mi">60</span>
-<span class="n">p3</span><span class="o">=</span><span class="mi">70</span>
-<span class="n">p4</span><span class="o">=</span><span class="mi">15</span>
-<span class="n">p5</span><span class="o">=</span><span class="mi">15</span>
+<span class="n">v1</span><span class="o">=</span><span class="mi">100</span>
+<span class="n">v2</span><span class="o">=</span><span class="mi">60</span>
+<span class="n">v3</span><span class="o">=</span><span class="mi">70</span>
+<span class="n">v4</span><span class="o">=</span><span class="mi">15</span>
+<span class="n">v5</span><span class="o">=</span><span class="mi">15</span>
 
 <span class="n">w1</span><span class="o">=</span><span class="mi">42</span>
 <span class="n">w2</span><span class="o">=</span><span class="mi">23</span>
@@ -15354,7 +15354,7 @@ x3_1 = 0.0 x3_2 = 0.0 x3_3 = 0.0
 
 <span class="n">modelo</span><span class="o">.</span><span class="n">restriccion1</span> <span class="o">=</span> <span class="n">Constraint</span><span class="p">(</span><span class="n">expr</span><span class="o">=</span><span class="n">w1</span><span class="o">*</span><span class="n">modelo</span><span class="o">.</span><span class="n">x1</span> <span class="o">+</span> <span class="n">w2</span><span class="o">*</span><span class="n">modelo</span><span class="o">.</span><span class="n">x2</span><span class="o">+</span><span class="n">w3</span><span class="o">*</span><span class="n">modelo</span><span class="o">.</span><span class="n">x3</span><span class="o">+</span><span class="n">w4</span><span class="o">*</span><span class="n">modelo</span><span class="o">.</span><span class="n">x4</span><span class="o">+</span><span class="n">w5</span><span class="o">*</span><span class="n">modelo</span><span class="o">.</span><span class="n">x5</span> <span class="o">&lt;=</span> <span class="mi">60</span><span class="p">)</span>
 
-<span class="n">modelo</span><span class="o">.</span><span class="n">objetivo</span> <span class="o">=</span> <span class="n">Objective</span><span class="p">(</span><span class="n">expr</span><span class="o">=</span><span class="n">p1</span><span class="o">*</span><span class="n">modelo</span><span class="o">.</span><span class="n">x1</span><span class="o">+</span><span class="n">p2</span><span class="o">*</span><span class="n">modelo</span><span class="o">.</span><span class="n">x2</span><span class="o">+</span><span class="n">p3</span><span class="o">*</span><span class="n">modelo</span><span class="o">.</span><span class="n">x3</span><span class="o">+</span><span class="n">p4</span><span class="o">*</span><span class="n">modelo</span><span class="o">.</span><span class="n">x4</span><span class="o">+</span><span class="n">p5</span><span class="o">*</span><span class="n">modelo</span><span class="o">.</span><span class="n">x5</span><span class="p">,</span> <span class="n">sense</span><span class="o">=</span><span class="n">maximize</span><span class="p">)</span>
+<span class="n">modelo</span><span class="o">.</span><span class="n">objetivo</span> <span class="o">=</span> <span class="n">Objective</span><span class="p">(</span><span class="n">expr</span><span class="o">=</span><span class="n">v1</span><span class="o">*</span><span class="n">modelo</span><span class="o">.</span><span class="n">x1</span><span class="o">+</span><span class="n">v2</span><span class="o">*</span><span class="n">modelo</span><span class="o">.</span><span class="n">x2</span><span class="o">+</span><span class="n">v3</span><span class="o">*</span><span class="n">modelo</span><span class="o">.</span><span class="n">x3</span><span class="o">+</span><span class="n">v4</span><span class="o">*</span><span class="n">modelo</span><span class="o">.</span><span class="n">x4</span><span class="o">+</span><span class="n">v5</span><span class="o">*</span><span class="n">modelo</span><span class="o">.</span><span class="n">x5</span><span class="p">,</span> <span class="n">sense</span><span class="o">=</span><span class="n">maximize</span><span class="p">)</span>
 
 <span class="n">glpsol_path</span> <span class="o">=</span> <span class="s1">'C:\winglpk-4.65\glpk-4.65\w64\glpsol.exe'</span>
 <span class="n">solver</span> <span class="o">=</span> <span class="n">SolverFactory</span><span class="p">(</span><span class="s1">'glpk'</span><span class="p">,</span> <span class="n">executable</span><span class="o">=</span><span class="n">glpsol_path</span><span class="p">)</span>  
@@ -15364,8 +15364,9 @@ x3_1 = 0.0 x3_2 = 0.0 x3_3 = 0.0
 <span class="c1"># Mostrar valor de funcion objetivo y variables</span>
 <span class="c1">#modelo.pprint()</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">"</span><span class="se">\n</span><span class="s2">Resultados:"</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">"Valor óptimo de la función objetivo:"</span><span class="p">,</span> <span class="s2">"$</span><span class="si">{:,.2f}</span><span class="s2">"</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">value</span><span class="p">(</span><span class="n">modelo</span><span class="o">.</span><span class="n">objetivo</span><span class="p">)))</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">"x1 ="</span><span class="p">,</span> <span class="n">value</span><span class="p">(</span><span class="n">modelo</span><span class="o">.</span><span class="n">x1</span><span class="p">),</span><span class="s2">"x2 ="</span><span class="p">,</span> <span class="n">value</span><span class="p">(</span><span class="n">modelo</span><span class="o">.</span><span class="n">x2</span><span class="p">),</span><span class="s2">"x3 ="</span><span class="p">,</span> <span class="n">value</span><span class="p">(</span><span class="n">modelo</span><span class="o">.</span><span class="n">x3</span><span class="p">),</span><span class="s2">"x4 ="</span><span class="p">,</span> <span class="n">value</span><span class="p">(</span><span class="n">modelo</span><span class="o">.</span><span class="n">x4</span><span class="p">),</span><span class="s2">"x5 ="</span><span class="p">,</span> <span class="n">value</span><span class="p">(</span><span class="n">modelo</span><span class="o">.</span><span class="n">x5</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"El peso de la mochila es de:"</span><span class="p">,</span><span class="n">value</span><span class="p">(</span><span class="n">modelo</span><span class="o">.</span><span class="n">x2</span><span class="p">)</span><span class="o">*</span><span class="n">w2</span><span class="o">+</span><span class="n">value</span><span class="p">(</span><span class="n">modelo</span><span class="o">.</span><span class="n">x3</span><span class="p">)</span><span class="o">*</span><span class="n">w3</span><span class="o">+</span><span class="n">value</span><span class="p">(</span><span class="n">modelo</span><span class="o">.</span><span class="n">x4</span><span class="p">)</span><span class="o">*</span><span class="n">w4</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"Valor óptimo de la función objetivo:"</span><span class="p">,</span> <span class="n">value</span><span class="p">(</span><span class="n">modelo</span><span class="o">.</span><span class="n">objetivo</span><span class="p">))</span>
 </pre></div>
 
      </div>
@@ -15387,8 +15388,9 @@ x3_1 = 0.0 x3_2 = 0.0 x3_3 = 0.0
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain">
 <pre>
 Resultados:
-Valor óptimo de la función objetivo: $145.00
 x1 = 0.0 x2 = 1.0 x3 = 1.0 x4 = 1.0 x5 = 0.0
+El peso de la mochila es de: 59.0
+Valor óptimo de la función objetivo: 145.0
 </pre>
 </div>
 </div>
